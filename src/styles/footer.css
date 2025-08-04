@@ -1,0 +1,30 @@
+.ftr {
+    background-color: white;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) [footer-start col-1-start] 300px [col-1-end col-2-start] 140px [col-2-end col-3-start] 140px [col-3-end footer-end] minmax(0, 1fr);
+    grid-auto-rows: auto;
+    gap: 30px;
+}
+
+.ftr-e:nth-child(1) {
+    grid-column: col-1;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+}
+.ftr-e:nth-child(2) {
+    grid-column: col-2;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+}
+.ftr-e:nth-child(3) {
+    grid-column: col-3;
+    grid-row: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.ftr-con-l {
+    list-style-type: none;
+}
