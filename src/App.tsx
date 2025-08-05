@@ -1,8 +1,7 @@
 import React from 'react'
 import './App.css'
-import Footer from './components/footer';
 import Header from './components/header';
-import Form from './components/form';
+import FormViewer from './components/formViewer';
 import portal from "./assets/supig10f.png";
 import ozempic from "./assets/brlg2a.svg";
 import exclaim from "./assets/supig3f.png";
@@ -136,11 +135,10 @@ function Home() {
                         </div>
                     </div>
                 </div>
+                  <FormViewer/>
             </div>
-            <Form/>
-            <Footer/>
+      
         </React.Fragment>
     )
 }
-
 export default Home;

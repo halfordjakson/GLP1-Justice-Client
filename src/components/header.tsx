@@ -4,18 +4,7 @@ const Navigation = () => {
   return (
     <div className="cope-core-navigation-top-container">
       <div className="cope-core-navigation-top-logo-container">
-        <a href="/">
-          <img
-            className="cope-core-navigation-top-desktop-only"
-            src="https://www.ozempic.com/content/dam/diabetes-patient/ozempic/images/25_01/header-logo.png"
-            alt="Ozempic® logo"
-          />
-          <img
-            className="cope-core-navigation-top-mobile-only"
-            src="https://www.ozempic.com/content/dam/diabetes-patient/ozempic/images/25_01/header-logo.png"
-            alt="Ozempic® logo"
-          />
-        </a>
+        
       </div>
 
       <nav className="cope-core-navigation-top-links-container cope-core-navigation-top-links-right" aria-label="topNavigation">
