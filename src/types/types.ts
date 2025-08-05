@@ -3,7 +3,10 @@ export interface FieldDef {
   name: string;
   label: string;
   type: 'text' | 'email' | 'number';
-
+  layout?: {
+    x?: string; // X position in inches
+    y?: string; // Y position in inches
+  }
   // …any other metadata (placeholder, row/col for absolute layout, etc)
 }
 
