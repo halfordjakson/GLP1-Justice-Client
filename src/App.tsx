@@ -1,26 +1,25 @@
 import React from 'react'
-import './App.css'
-import Header from './components/header';
-import FormViewer from './components/formViewer';
+import Navigation from './components/navigation';
+import Footer from "./components/footer"
 import portal from "./assets/supig10f.png";
 import ozempic from "./assets/brlg2a.svg";
-import exclaim from "./assets/supig3f.png";
 import crowd from "./assets/supig4f.png";
+import './App.css'
 function Home() {
     return (
         <React.Fragment>  
-            <Header />
+            <Navigation/>
             <div className="home-campaign-qph overflow-afe" id="campaign-root">
                 <div className="hdr-gr">
                     <h1>Do you feel as if you have been affected by <span><img className="img-in" width="80" height="80" src={ozempic} /></span> or other drugs that are similar to such?</h1>
                 </div>
 
                 <div className="container-je6">
-                    <div className="notecard note">
-                        <p><span className="s-txt"><strong>Tip:</strong>You're not alone; you and others suffer from unjust practices by multinational companies.</span><span className="exc">Claim yourself <img className="exc-g"src={exclaim}/></span></p>
-                    </div>
+                   
 
                     <div className="init ml-adj d-itj pt-sm-gxn">
+                       
+                       
                         {
                         /* 
                   <div className="col-ozi d-itj column-q72 events-qoz position-7ky">
@@ -60,11 +59,6 @@ function Home() {
                     </div>
                      */ }
                     </div>
-
-
-
-
-
                     <div className="d-6fb position-4nl build-in-qxd">
 
                         <div className="col-wsx d-6fb column-vo5 item-skx">
@@ -96,9 +90,6 @@ function Home() {
                                     </div>
                                     </div>
                                     <div className="pan-i">
-                                        <div className="pan-f">
-                                        <img src={portal} alt="portal" className="pan-fi"/>
-                                        </div>
                                         <div className="pan-dec">
                                             <div className="pan-cont">
                                                 <div className="pan-cont-inner">
@@ -114,6 +105,9 @@ function Home() {
                                                 </div>
                                             </div>
                                         </div>
+                                        <div className="pan-f">
+                                        <img src={portal} alt="portal" className="pan-fi"/>
+                                        </div>
                                     </div>
 
 
@@ -123,7 +117,7 @@ function Home() {
                                         <div className="pan-dec">
                                             <div className="pan-cont">
                                                 <div className="pan-cont-inner">
-                                                    <h2 className="pan-title">Commmon Documents & Licensure</h2>
+                                                    <h2 className="pan-title">Common Documents & Licensure</h2>
                                                 </div>
                                             </div>
                                         </div>
@@ -135,10 +129,10 @@ function Home() {
                         </div>
                     </div>
                 </div>
-                  <FormViewer/>
             </div>
-      
+        <Footer/>                
         </React.Fragment>
+
     )
 }
 export default Home;

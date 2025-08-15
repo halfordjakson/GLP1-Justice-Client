@@ -1,11 +1,15 @@
 import { StrictMode } from 'react'
-import { createRoot } from 'react-dom/client'
+import { createRoot } from 'react-dom/client';
+import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App"
+import About from "./components/about"
+import Profile from "./components/profile"
+import File from "./components/file"
 import { pdfjs } from 'react-pdf';
-pdfjs.GlobalWorkerOptions.workerSrc = 
-  `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
+const router = createBrowserRouter([{path: "/",element: <App/>}, {path: "/about", element: <About/>}, {path: "/profile", element:<Profile/>}, {path:"/file", element: <File/>}]);
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-  <App/> 
+    <RouterProvider router={router} />
   </StrictMode>,
 )

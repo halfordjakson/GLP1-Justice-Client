@@ -1,0 +1,93 @@
+
+/* Accordion.css */
+
+.acc {
+  background-color: #FFFFFF;
+  position: relative;
+  display: grid;
+  padding: 4rem 0.25rem 0 0;
+  grid-template-columns: [viewport-start] minmax(0, 1fr) 
+  [accordion-start panel-start] 600px 
+  [panel-end accordion-fend] minmax(0, 1fr) [viewport-end];
+  grid-auto-rows: auto;
+  width: 100%;
+  margin: 0 auto;
+  font-family: sans-serif;
+}
+.acc-itms {
+  grid-column: panel-start/viewport-end;
+  grid-row: 1 / -1;
+}
+.floating-container {
+  grid-column: accordion;
+  grid-row: 1 / -1;
+}
+.spawn-btn {
+  margin-bottom: 1rem;
+  padding: 0.5rem 1rem;
+}
+
+.acc-itms .item + .item {
+  margin-top: 0.1rem;
+}
+
+.acchdr {
+  font-family: "Work Sans";
+  width: 100%;
+  text-align: left;
+  padding: 0.75rem 1rem;
+  background: #FF4D00;
+  color: black;
+  border: none;
+  cursor: pointer;
+  position: relative;
+}
+
+.acchdr h1 {
+  font-size: 1rem;
+  padding: 1rem; 
+}
+
+.acchdr.open {
+  background: #FF8F66;
+}
+
+.panel {
+  display: flex;
+  background: #FFFFFF;
+  border: 1px solid #ddd;
+  border-top: none;
+}
+.panel-content {
+  flex: 1;
+}
+.panel-image {
+  flex: 1;
+}
+.panel-content {
+  flex: 1;
+  padding: 1rem;
+}
+.panel-image img {
+  max-width: 100%;
+  display: block;
+}
+
+/* Floating icon animation */
+.floating-container {
+  pointer-events: none;
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  overflow: hidden;
+}
+.floating-icon {
+  position: absolute;
+  width: 32px;
+  animation: floatAcross 3s ease-in forwards;
+}
+@keyframes floatAcross {
+  to {
+    transform: translateX(100vw) translateY(-50%);
+    opacity: 0;
+  }
+}

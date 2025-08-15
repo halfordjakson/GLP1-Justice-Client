@@ -1,0 +1,17 @@
+.ab-rc {
+display: block;
+background: linear-gradient(220deg, #FF4D00, #FF9466, #992E00, #00B2FF, #006B99);
+margin: 0 0 1rem 0;
+padding: 0 0 0.45rem 0;
+border-bottom: 0.25rem solid #FF4D00;
+}
+.ab-ht-dec {
+text-align: left;
+}
+.ab-ht-dec h1 {
+padding: 1rem;
+margin: 0 0 0 1rem;
+font-family: "Work Sans";
+color: white;
+font-size: 1.8rem;
+}

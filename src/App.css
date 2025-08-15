@@ -1134,20 +1134,17 @@ h4 {}
   grid-template-columns: minmax(0, 1fr)[panel-start col-start] 600px [col-end tail-start] 400px [panel-end tail-end];
   grid-template-rows: [panel-start lead-start] 350px [lead-end tail-start] 400px [tail-end panel-end];
   gap: 2rem 30px;
+  padding: 1rem;
 }
 .pan-i {
-background-color: orange;
-border-radius: 1rem;
-border-color: red;
-
+  display: flex;
+  background-color: #FFFFFF;
 }
 .pan-f {
     flex: 1;
 }
 .pan-fi {
   width: 100%;
-  border-top-right-radius: 1rem;
-  border-bottom-right-radius: 1rem;
   height: 100%;
   object-fit: cover;
 }
@@ -1171,7 +1168,7 @@ border-color: red;
   grid-column: tail;
 }
 .pan-dec {
-    flex: 1;
+  flex: 1;
   border: 0.6ren solid orange;
 }
 .pan-cont {
@@ -1608,6 +1605,7 @@ body {
   }
 
   body {
+    background-color: #FFFFFF;
     margin: 0;
   }
 

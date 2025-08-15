@@ -12,18 +12,17 @@ body {
     --text-link:  #0069c2;  
     --background-primary:  #fff;  
     --background-information:  #0085f21a;  
+    --icon-primary:  #696969;  
     --icon-information:  #0085f2;  
     --accent-primary:  #0085f2;  
     --accent-primary-engage:  #0085f21a;  
     --shadow-01:  0 1px 2px #2b2a330d;  
-    --code-background-inline:  #f2f1f1;  
     --notecard-link-color:  #343434;  
     --scrollbar-bg:  #0000;  
     --scrollbar-color:  #00000040;  
-    --js-accent-color:  #afa100;  
-    --js-mark-color:  #f0e498;  
-    --js-accent-background-color:  #93870030;  
-    --js-accent-engage:  #938700b3;  
+    --learn-accent-color:  #d00058;  
+    --learn-accent-background-color:  #ff1f7230;  
+    --learn-accent-engage:  #ff1f72b3;  
     --curriculum-border-color-hover:  var(--text-inactive);  
     --note-background:  var(--background-information);  
     --note-theme:  var(--icon-information);  
@@ -59,7 +58,6 @@ html {
     --font-fallback: BlinkMacSystemFont,"Segoe UI","Roboto","Oxygen","Ubuntu","Cantarell","Fira Sans","Droid Sans","Helvetica Neue",sans-serif; 
     --font-body: Inter,var(--font-fallback); 
     --font-heading: Inter,var(--font-fallback); 
-    --font-code: Menlo,Consolas,Monaco,Liberation Mono,Lucida Console,monospace; 
     --base-font-size: 100%; 
     --base-line-height: 1.2; 
     --heading-line-height: var(--base-line-height); 
@@ -115,18 +113,17 @@ html {
     --text-link: #0069c2; 
     --background-primary: #fff; 
     --background-information: #0085f21a; 
+    --icon-primary: #696969; 
     --icon-information: #0085f2; 
     --accent-primary: #0085f2; 
     --accent-primary-engage: #0085f21a; 
     --shadow-01: 0 1px 2px #2b2a330d; 
-    --code-background-inline: #f2f1f1; 
     --notecard-link-color: #343434; 
     --scrollbar-bg: #0000; 
     --scrollbar-color: #00000040; 
-    --js-accent-color: #afa100; 
-    --js-mark-color: #f0e498; 
-    --js-accent-background-color: #93870030; 
-    --js-accent-engage: #938700b3; 
+    --learn-accent-color: #d00058; 
+    --learn-accent-background-color: #ff1f7230; 
+    --learn-accent-engage: #ff1f72b3; 
     --curriculum-border-color-hover: var(--text-inactive); 
     color-scheme: light;
   } 
@@ -146,6 +143,10 @@ html {
 
 .notecard { 
     color: var(--text-secondary);
+} 
+
+.notecard:last-of-type { 
+    margin-bottom: 2rem;
 } 
 
 *,:after,:before { 
@@ -210,24 +211,6 @@ strong {
     letter-spacing: .02rem;
 } 
 
-code { 
-    border-radius: var(--elem-radius); 
-    font-family: var(--font-code); 
-    font-size: var(--type-smaller-font-size); 
-    tab-size: 4;
-} 
-
-code { 
-    background: var(--code-background-inline); 
-    padding: .125rem .25rem; 
-    width: -webkit-fit-content; 
-    width: fit-content;
-} 
-
-code  { 
-    color: var(--notecard-link-color);
-} 
-
 a { 
     text-decoration: none;
 } 
@@ -246,12 +229,21 @@ a:not(.button)  {
     width: fit-content;
 } 
 
-.notecard > :last-child :last-child  { 
-    margin-bottom: 0;
-} 
-
 a:not(.button)  { 
     color: var(--notecard-link-color);
+} 
+
+.external:after { 
+    background-color: var(--icon-primary); 
+    content: ""; 
+    display: inline-flex; 
+    height: 10px; 
+    margin-left: 4px; 
+    -webkit-mask-image: url(https://developer.mozilla.org/static/media/external.ad7e40a95bc765963433.svg); 
+    mask-image: url(https://developer.mozilla.org/static/media/external.ad7e40a95bc765963433.svg); 
+    -webkit-mask-size: cover; 
+    mask-size: cover; 
+    width: 10px;
 } 
 
  .main-page-content a:hover { 
@@ -260,6 +252,18 @@ a:not(.button)  {
 
 .main-content .notecard a:not(.button):hover { 
     text-decoration: none;
+} 
+
+.notecard > :last-child :last-child  { 
+    margin-bottom: 0;
+} 
+
+.main-page-content a:focus, .main-page-content a:hover { 
+    text-decoration: none;
+} 
+
+em { 
+    font-variation-settings: "slnt" -10;
 } 
 
 
