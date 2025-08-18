@@ -1,0 +1,17 @@
+.srv-r {
+    display: grid;
+    grid-template-columns: [viewport-start] minmax(0, 1fr) [services-start] 800px [services-end] minmax(0, 1fr) [viewport-end];
+    grid-auto-rows: auto;
+}
+.srv-dec {
+    display: contents;
+    grid-row: 1;
+    grid-column: 1 / -1;
+    border: 1em solid #FF4D00;
+}
+.srv-cc {
+    background-color: red;
+    padding: 2rem;
+    grid-column: viewport;
+    grid-row: 1;
+}

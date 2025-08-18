@@ -2,30 +2,28 @@ import React from 'react';
 import "../styles/footer.css";
 const Footer = () => {
   const helpfulLinks = [
-    { href: '/patients/report-a-side-effect.html', label: 'Report a side effect' },
-    { href: '/patients.html', label: 'Patient help' },
-    { href: '/contact-us/corporate-procurement.html', label: 'Supplier help' },
-    { href: '/our-products/our-medicines.html', label: 'Product list' },
-    { href: '/contact-us.html', label: 'Contact us' },
-    { href: '/investors/annual-report.html', label: 'Annual Report' },
-    { href: '/sustainable-business/esg-portal.html', label: 'ESG reporting' },
-    { href: 'https://novonordiskfonden.dk/en/', label: 'Novo Nordisk Foundation', external: true }
+    { href: '/patients/report-a-side-effect', label: 'File a Claim' },
+    { href: '/patients', label: 'Customer Support' },
+    { href: '/contact', label: 'Contact us' },
+    { href: '/resources/information', label: 'Information Resources' },
+    { href: '/resources/health', label: 'Health Resources' },
+    { href: '/live', label: 'Speak with a live agent' },
   ];
 
   const socialLinks = [
-    { href: '/data-privacy-and-user-rights/social-media-privacy-disclaimer.html', label: 'Social media community guidelines' },
-    { href: 'https://www.linkedin.com/company/novo-nordisk', label: 'LinkedIn', external: true },
-    { href: 'https://www.youtube.com/user/novonordisk', label: 'YouTube', external: true },
-    { href: 'https://www.facebook.com/novonordisk', label: 'Facebook', external: true },
-    { href: 'https://twitter.com/novonordisk', label: 'X (Twitter)', external: true },
-    { href: 'https://www.instagram.com/novonordisk', label: 'Instagram', external: true },
-    { href: 'https://www.tiktok.com/@novonordisk', label: 'TikTok', external: true }
+    { href: '/privacy/social', label: 'Social media community guidelines' },
+    { href: 'https://www.linkedin.com/company/glp-justice', label: 'LinkedIn', external: true },
+    { href: 'https://www.youtube.com/user/glpjustice', label: 'YouTube', external: true },
+    { href: 'https://www.facebook.com/glpjustice', label: 'Facebook', external: true },
+    { href: 'https://twitter.com/glpjustice', label: 'X (Twitter)', external: true },
+    { href: 'https://www.instagram.com/glpjustice', label: 'Instagram', external: true },
+    { href: 'https://www.tiktok.com/@glpjustice', label: 'TikTok', external: true }
   ];
 
   const legalLinks = [
-    { href: '/copyright.html', label: '© 2025 Novo Nordisk A/S' },
-    { href: '/data-privacy-and-user-rights.html', label: 'Data Privacy' },
-    { href: '/data-privacy-and-user-rights/cookie-policy.html', label: 'Cookie policy' },
+    { href: '/copyright', label: '© 2025 glp Justice A/S' },
+    { href: '/privacy/data', label: 'Data Privacy' },
+    { href: '/privacy/cookies', label: 'Cookie policy' },
     { href: '#', label: 'Cookie settings', extraClass: 'optanon-toggle-display', tabIndex: 0 }
   ];
 
@@ -36,12 +34,11 @@ const Footer = () => {
           <h2 className="tagline m-xxs-bottom">NOVO NORDISK HQ</h2>
           <div className="infotext">
             <p>
-              Novo Nordisk A/S<br />
-              Novo Alle 1<br />
-              2880 Bagsværd<br />
-              Denmark<br />
-              +45-4444-8888<br />
-              CVR-no.&nbsp;24256790
+              glp Justice A/S<br />
+              1325 North Walker Ave<br />
+              <br />
+              Oklahoma City, Oklahoma, USA<br />
+              +1-580-307-7781<br />
             </p>
             <p>&nbsp;</p>
             <p>

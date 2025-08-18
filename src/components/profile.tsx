@@ -1,5 +1,5 @@
 import React, { useMemo } from 'react';
-import ChartWithRanges from './chart.ranger';
+import ChartWithRanges from './range.chart';
 import Navigation from "./navigation"
 import { type Point } from './chart';
 
