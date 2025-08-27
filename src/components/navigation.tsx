@@ -31,7 +31,7 @@ return (
             ['/about',  'About'],
             ['/profile', 'Profile'],
             ['/services', 'Services'],
-            ['/claims', 'Claims'],
+            ['/resources', 'Resources'],
           ].map(([href, label]) => (
             <li
               className={

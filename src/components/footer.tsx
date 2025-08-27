@@ -31,45 +31,20 @@ const Footer = () => {
     <footer id="footer" role="contentinfo" className="ft-wrapper gutters snipcss-pwAhK">
       <div className="tb-Grid tb-Grid--l--24 tb-Grid--m--24 tb-Grid--s--24 position-relative">
         <div className="tb-GridColumn tb-GridColumn--l--5 tb-GridColumn--offset--l--0 tb-GridColumn--m--5 tb-GridColumn--offset--m--1 tb-GridColumn--s--10 tb-GridColumn--offset--s--2 m-xl-bottom">
-          <h2 className="tagline m-xxs-bottom">NOVO NORDISK HQ</h2>
           <div className="infotext">
             <p>
-              glp Justice A/S<br />
+              glp Justice, LLC<br />
               1325 North Walker Ave<br />
               <br />
               Oklahoma City, Oklahoma, USA<br />
               +1-580-307-7781<br />
             </p>
             <p>&nbsp;</p>
-            <p>
-              <i>
-                Our medicines are for the approved indication for which they are authorised in the local country or region. For more information, please visit our{' '}
-                <strong>
-                  <a href="/our-products/our-medicines.html">product page</a>
-                </strong>
-              </i>
-            </p>
           </div>
         </div>
 
         <div className="tb-GridColumn tb-GridColumn--l--5 tb-GridColumn--offset--l--1 tb-GridColumn--m--5 tb-GridColumn--offset--m--1 tb-GridColumn--s--8 tb-GridColumn--offset--s--2 m-xl-bottom">
           <h2 className="tagline m-xxs-bottom">Helpful links</h2>
-          <ul className="list">
-            {helpfulLinks.map((link, idx) => (
-              <li key={idx}>
-                <a
-                  href={link.href}
-                  target={link.external ? '_blank' : '_self'}
-                  rel={link.external ? 'noopener noreferrer' : undefined}
-                  aria-label={link.label + (link.external ? ', opens in a new window' : '')}
-                  className="infotext"
-                >
-                  {link.label}
-                  <span className="icon icon-right-arrow m-xxs-left" />
-                </a>
-              </li>
-            ))}
-          </ul>
         </div>
 
         <div className="tb-GridColumn tb-GridColumn--l--5 tb-GridColumn--offset--l--1 tb-GridColumn--m--5 tb-GridColumn--offset--m--1 tb-GridColumn--s--10 tb-GridColumn--offset--s--2 m-xl-bottom social-media-links">

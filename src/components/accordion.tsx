@@ -5,28 +5,8 @@ import { accordionItems } from '../types/types';
 import '../styles/accordion.css';
 export function Accordion() {
   const [openId, setOpenId] = useState<string | null>(null);
-  const [floatingIcons, setFloatingIcons] = useState<JSX.Element[]>([]);
   const toggle = (id: string) =>
     setOpenId(current => (current === id ? null : id));
-  const spawnIcon = useCallback(() => {
-    const iconUrls = ['/icons/star.svg','/icons/heart.svg','/icons/lightning.svg'];
-    const url = iconUrls[Math.floor(Math.random()*iconUrls.length)];
-    const key = Date.now().toString();
-    const startY = Math.random() * 80 + '%';
-    const anim = (
-      <img
-        key={key}
-        src={url}
-        className="floating-icon"
-        style={{ top: startY, left: '0%' }}
-        onAnimationEnd={() =>
-          setFloatingIcons(list => list.filter(el => el.key !== key))
-        }
-      />
-    );
-    setFloatingIcons(list => [...list, anim]);
-  }, []);
-
   return (
     <div className="acc">
       {/*  <button className="spawn-btn" onClick={spawnIcon}>
@@ -69,10 +49,6 @@ export function Accordion() {
             </div>
           );
         })}
-      </div>
-
-      <div className="floating-container">
-        {floatingIcons}
       </div>
     </div>
   );
