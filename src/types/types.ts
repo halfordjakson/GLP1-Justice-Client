@@ -6,7 +6,7 @@ import graphic4 from "../assets/supig6a.png";
 export interface FieldDef {
   name: string;
   label: string;
-  type: 'text' | 'email' | 'number';
+  type: 'text' | 'email' | 'number' | 'date' | 'tel' | 'url' | 'password';
   layout?: {
     x?: string; // X position in inches
     y?: string; // Y position in inches

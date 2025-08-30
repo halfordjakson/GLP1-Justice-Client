@@ -1,109 +1,117 @@
+// profile.tsx
 import React, { useEffect, useRef, useState } from 'react';
 import Navigation from './navigation';
-import Footer from "./footer";
+import Footer from './footer';
 import ClaimsChart, { type Point } from './chart';
 import { SankeyDiagram } from './sankey';
 import '../styles/profile.css';
 
-// quick synthetic dataset
+// Synthetic dataset for the point chart
 const demoData: Point[] = Array.from({ length: 60 }, (_, i) => ({
-  x: new Date(Date.now() - (59 - i) * 60_000), // per minute
+  x: new Date(Date.now() - (59 - i) * 60_000),
   y: Math.max(0, 50 + 20 * Math.sin(i / 6) + (Math.random() - 0.5) * 10),
 }));
 
 export default function Profile() {
-  // Measure ONLY the chart box (not the wrapper that has the <h1>)
+  // Measure only the chart areas (second row of each card)
   const chartBoxRef = useRef<HTMLDivElement>(null);
-  const [size, setSize] = useState({ w: 0, h: 420 });
+  const sankeyBoxRef = useRef<HTMLDivElement>(null);
+
+  const [chartSize, setChartSize]   = useState({ w: 0, h: 420 });
+  const [sankeySize, setSankeySize] = useState({ w: 0, h: 420 });
 
   useEffect(() => {
     const el = chartBoxRef.current;
     if (!el) return;
     const ro = new ResizeObserver(([entry]) => {
       const { width, height } = entry.contentRect;
-      setSize({ w: Math.max(0, width), h: Math.max(0, height) }); // chart box drives height
+      setChartSize({ w: Math.max(0, width), h: Math.max(0, height) });
     });
     ro.observe(el);
     return () => ro.disconnect();
   }, []);
 
-  const margin = { top: 16, right: 16, bottom: 28, left: 44 };
+  useEffect(() => {
+    const el = sankeyBoxRef.current;
+    if (!el) return;
+    const ro = new ResizeObserver(([entry]) => {
+      const { width, height } = entry.contentRect;
+      setSankeySize({ w: Math.max(0, width), h: Math.max(0, height) });
+    });
+    ro.observe(el);
+    return () => ro.disconnect();
+  }, []);
+
+  // Shared heights/margins
+  const CARD_HEIGHT = 420; // height for the chart row of each card
+  const chartMargin = { top: 16, right: 16, bottom: 28, left: 44 };
 
   return (
-    <React.Fragment>
+    <>
       <Navigation />
+
       <div className="pro-r">
-         <SankeyDiagram
-   width={980}
-   height={520}
-   data={{
-     nodes: [
-       { name: "Total Claims" },
-       { name: "Technology" },
-       { name: "Health" },
-       { name: "Finance" },
-       { name: "Sub-Tech A" },
-     ],
-     links: [
-       { source: 0, target: 1, value: 40 },
-       { source: 0, target: 2, value: 35 },
-       { source: 0, target: 3, value: 25 },
-       { source: 1, target: 4, value: 12 },
-     ],
-   }}
- />
-        <div className="pro-dec"></div>
+        {/* Page header (not a chart title) */}
         <div className="pro-h">
           <div className="pro-t">
-            <h1>Profile & Activity</h1>
+            <h2>Profile & Activity</h2>
           </div>
         </div>
 
+        {/* Content column: cards stacked vertically */}
         <div className="pro-cc">
-          <div
-            className="pro-tls"
-            style={{
-              // make the tile a two-row grid: title + chart
-              display: 'grid',
-              gridTemplateRows: 'auto 1fr',
-              background: '#0f1115',
-              borderRadius: 16,
-              padding: '12px',
-              gap: 8,
-            }}
-          >
-            <div className="pro-t">
-              <h1 style={{ margin: 0, color: "white", fontFamily: "Work Sans" }}>Claim Activity</h1>
-            </div>
+          {/* ── Claim Activity Card ── */}
+          <section className="tile-card">
+            <header className="tile-header">
+              <h2 className="tile-title">Claim Activity</h2>
+            </header>
 
-            {/* Dedicated chart box with fixed height -> this is what we measure */}
+            {/* Measured chart area (row 2) */}
             <div
               ref={chartBoxRef}
               className="tile-chart"
-              style={{
-                width: '100%',
-                height: 420,        // pick your target (or clamp/ratio if you prefer)
-                minHeight: 0,       // important inside grid/flex to allow shrinking
-                boxSizing: 'border-box',
-              }}
+              style={{ height: CARD_HEIGHT }}
             >
-              {size.w > 0 && (
+              {chartSize.w > 0 && (
                 <ClaimsChart
                   data={demoData}
-                  width={size.w}
-                  height={size.h}   // equal to the chart box height
-                  margin={margin}
+                  width={chartSize.w}
+                  height={chartSize.h}
+                  margin={chartMargin}
                   accent="#FF4D00"
                   showTicks
                 />
               )}
             </div>
-            <div>
+          </section>
+
+          {/* ── Sankey Card ── */}
+          <section className="tile-card">
+            <header className="tile-header">
+              <h2 className="tile-title">Claims Breakdown</h2>
+            </header>
+
+            {/* Measured diagram area (row 2) */}
+            <div
+              ref={sankeyBoxRef}
+              className="tile-chart"
+              style={{ height: CARD_HEIGHT }}
+            >
+              {sankeySize.w > 0 && (
+                <SankeyDiagram
+                  width={sankeySize.w}
+                  height={sankeySize.h}
+                  margin={{ top: 16, right: 16, bottom: 16, left: 16 }}
+                  compact
+                  insideLabels
+                />
+              )}
             </div>
-          </div>
+          </section>
         </div>
       </div>
+
       <Footer />
-    </React.Fragment>
+    </>
   );
 }

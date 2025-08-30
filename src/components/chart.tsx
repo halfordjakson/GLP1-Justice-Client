@@ -212,7 +212,7 @@ export default function ClaimsChart({
         position: 'relative',
         width,
         height,
-        background: '#0f1115',
+        background: '#F8F9FA',
         borderRadius: 16,
         display: 'grid',
         gridTemplateRows: `${buttonsRow}px 1fr`, // buttons row + chart
@@ -284,19 +284,6 @@ export default function ClaimsChart({
             strokeDasharray="2 8"
           />
         )}
-
-        {/* bottom baseline: FLUSH with full container width */}
-        <line
-          x1={0.5}
-          x2={width - 0.5}
-          y1={chartH - 0.5}
-          y2={chartH - 0.5}
-          stroke="#1f2330"
-          strokeWidth={2}
-          shapeRendering="crispEdges"
-          pointerEvents="none"
-        />
-
         {/* bottom tick labels: clamp to avoid clipping at edges */}
         {showTicks &&
           ticks.map((t: any, i: any) => {

@@ -2,23 +2,24 @@ import React from "react";
 import Form from "./formViewer.tsx";
 import Navigation from "./navigation.tsx";
 import Footer from "./footer.tsx";
+import "../styles/file.css";
 export default function File() {
     return (
         <React.Fragment>
             <Navigation />
-
-            <div className="cla-rc">
-                <div className="cla-rc-dec">
-                    <div className="cla-cc">
-                        <div className="cla-cc-dec">
-                            <div className="cla-con">
-                                <div className="cla-con-dec">
-                                    <Form />
-                                </div>
-                            </div>
+            <div className="fl-r">
+                <div className="fl-dec"></div>
+                <div className="fl-t">
+                    <h2>File</h2>
+                </div>
+                <div className="fl-cc">
+                    <div className="fl-c">
+                        <div className="fl-f">
+                            <Form />
                         </div>
                     </div>
                 </div>
+
 
             </div>
             <Footer />

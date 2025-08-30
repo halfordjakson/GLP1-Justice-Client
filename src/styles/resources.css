@@ -1,18 +1,23 @@
-.srv-r {
+.rsr-r {
     display: grid;
     grid-template-columns: [viewport-start] minmax(0, 1fr) 
-    [services-start] 800px [services-end] minmax(0, 1fr) [viewport-end];
-    grid-auto-rows: auto;
+    [prefix-start] 200px [prefix-end content-start] 600px 
+    [content-end] minmax(0, 1fr) [viewport-end];
 }
-.srv-dec {
+.rsr-dec {
     display: contents;
-    grid-row: 1;
     grid-column: 1 / -1;
+    grid-row: 1;
 }
-.srv-t {
+.rsr-cc {
+    grid-column: content-start / content-end;
+    grid-row: 2;
+}
+.rsr-t {
     grid-column: viewport-start / viewport-end;
     grid-row: 1;
-    color: white;
-    display: block;
     background: -webkit-linear-gradient(45deg, #E07A5F, #E07A5F, #CC0000, #FF3300, #FF8000, #FFB300, #FF9900, #FFB300, #FFCC33);
+}
+.rsr-t h2 {
+    color: white;
 }

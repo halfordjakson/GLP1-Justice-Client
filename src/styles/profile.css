@@ -1,42 +1,53 @@
+/* Root page grid: single content column with a header row */
 .pro-r {
   display: grid;
-  grid-template-columns: [viewport-start] minmax(0, 1fr) [header-start] 800px [header-end content-start] 400px [content-end] minmax(0, 1fr) [viewport-end];
-  grid-template-rows: [header-start] 50px [header-end content-start] 1fr [content-end footer-start] 1fr [footer-end];
+  grid-template-columns: [viewport-start] 
+  minmax(0, 1fr) [content-start header-start] 300px 
+  [content-end graphics-start] 600px 
+  [graphics-end header-end] minmax(0, 1fr) [viewport-end];
+  grid-template-rows: [header-start] auto [header-end content-start] 1fr [content-end];
+  grid-auto-rows: auto;
 }
-.pro-dec {
-  display: contents;
+.pro-h {
+  display: flex;
+  color: white;
   grid-column: viewport-start / viewport-end;
-  grid-row: header-start / header-end;
+  background: -webkit-linear-gradient(45deg, #E07A5F, #E07A5F, #CC0000, #FF3300, #FF8000, #FFB300, #FF9900, #FFB300, #FFCC33);
+  grid-row: 1;
 }
 .pro-cc {
-  grid-column: content-start / content-end;
+  grid-column: graphics-start / viewport-end;
   grid-row: content-start / content-end;
+  padding: 1rem;
 }
-.pro-h {
+/* profile.css additions (or keep your existing equivalents) */
+.tile-card {
+  display: grid;
+  margin-bottom: 1rem;
+  grid-template-rows: auto 1fr; /* header row + chart row */
+  gap: 8px;
+  background: #FF4D00;
+  border-left: 2px solid #FF4D00;
+  border-radius: 0.25rem;
+  padding: 12px;
+  overflow: hidden; /* clip any inner overflow */
+}
+
+.tile-header {
   display: flex;
-  justify-content: center;
   align-items: center;
-  grid-column: header-start / content-end;
-  grid-row: header-start / header-end;
 }
-.pro-h {
-  grid-column: viewport-start / viewport-end;
-  display: flex;
-  padding: 1rem;
-  margin: 0 0 1rem 0;
-  justify-content: start;
-  background: linear-gradient(220deg, #FF4D00, #FF9466, #992E00, #00B2FF, #006B99);
+
+.tile-title {
+  margin: 0;
+  color: #fff;
+  font-family: "Work Sans", sans-serif;
+  font-size: 1.25rem;
+  font-weight: 700;
 }
-.pro-t {
-  font-family: "Work Sans";
-  color: white;
-  font-size: 1.8rem;
-}
-.pro-t h1 {
-  padding: 1rem;
-  font-size: 1.8rem;
-}
-.pro-tls {
-  grid-column: content-start / content-end;
-  grid-row: content-start / content-end;
+
+.tile-chart {
+  width: 100%;
+  min-height: 0;   /* allow the SVG to shrink within the grid */
+  box-sizing: border-box;
 }

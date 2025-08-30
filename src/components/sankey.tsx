@@ -18,34 +18,39 @@ export interface SankeyDiagramProps {
   data?: { nodes: NodeDatum[]; links: LinkDatum[] };
   linkColors?: string[];
   nodeColor?: string;
-  background?: string;
+  cardBackground?: string;
+  cardRadius?: number;
+  insideLabels?: boolean;        // prefer inside; falls back outside if needed
+  compact?: boolean;
+  labelGutterLeft?: number;      // px reserved for outside labels (left)
+  labelGutterRight?: number;     // px reserved for outside labels (right)
 }
 
 export const SankeyDiagram: React.FC<SankeyDiagramProps> = ({
   width,
   height,
-  margin = { top: 20, right: 180, bottom: 20, left: 180 },
+  margin = { top: 16, right: 16, bottom: 16, left: 16 },
   data,
   linkColors = [
-    "#E07A5F", "#3D405B", "#81B29A", "#F2CC8F", "#9B5DE5",
-    "#00BBF9", "#F15BB5", "#00F5D4", "#FEE440", "#FF006E",
+    "#E07A5F","#FF9900","#FFE066","#CC0000",
+    "#FF3300","#FF8000","#FFB300","#FF9900",
+    "#FFB300","#FFCC33",
   ],
   nodeColor = "#003049",
-  background = "#ffffff",
+  cardBackground = "#F8F9FA",
+  cardRadius = 16,
+  insideLabels = true,
+  compact = true,
+  labelGutterLeft = 84,
+  labelGutterRight = 120,
 }) => {
-  // Example dataset if no data is provided
+  // Sample data if none provided
   const sampleData = useMemo(
     () => ({
       nodes: [
-        { name: "Wages" },      // 0
-        { name: "Other" },      // 1
-        { name: "Budget" },     // 2
-        { name: "Taxes" },      // 3
-        { name: "Housing" },    // 4
-        { name: "Food" },       // 5
-        { name: "Transportation" }, // 6
-        { name: "Other Necessities" }, // 7
-        { name: "Savings" },    // 8
+        { name: "Wages" }, { name: "Other" }, { name: "Budget" },
+        { name: "Taxes" }, { name: "Housing" }, { name: "Food" },
+        { name: "Transportation" }, { name: "Other Necessities" }, { name: "Savings" },
       ],
       links: [
         { source: 0, target: 2, value: 1500 },
@@ -60,96 +65,161 @@ export const SankeyDiagram: React.FC<SankeyDiagramProps> = ({
     }),
     []
   );
-
   const { nodes, links } = data ?? sampleData;
 
-  const iw = Math.max(0, width - margin.left - margin.right);
-  const ih = Math.max(0, height - margin.top - margin.bottom);
+  // Reserve gutters so outside labels never clip on card edges
+  const leftPad  = margin.left  + labelGutterLeft;
+  const rightPad = margin.right + labelGutterRight;
+  const topPad   = margin.top;
+  const botPad   = margin.bottom;
 
-  const { layoutNodes, layoutLinks } = useMemo(() => {
+  // Inner plot size (links/nodes live only here)
+  const iw = Math.max(0, width  - leftPad - rightPad);
+  const ih = Math.max(0, height - topPad  - botPad);
+
+  // Compact tuning
+  const BASE_W = 980, BASE_H = 420;
+  const scale = Math.min(iw / BASE_W, ih / BASE_H);
+  const nodeWidth   = (compact ? 12 : 18) * Math.max(0.8, scale || 1);
+  const nodePadding = (compact ? 20 : 40) * Math.max(0.8, scale || 1);
+  const fontSize    = Math.max(10, Math.round((compact ? 11 : 13) * Math.max(0.8, scale || 1)));
+
+  const { layoutNodes, layoutLinks, maxDepth } = useMemo(() => {
     const sankeyGen = d3Sankey<NodeDatum, LinkDatum>()
-      .nodeWidth(18)
-      .nodePadding(40)
-      .nodeAlign(sankeyJustify) // flush columns, like SankeyMATIC
+      .nodeWidth(nodeWidth)
+      .nodePadding(nodePadding)
+      .nodeAlign(sankeyJustify)
       .extent([[0, 0], [iw, ih]]);
 
     const { nodes: nRaw, links: lRaw } = sankeyGen({
-      nodes: nodes.map((d) => ({ ...d })),
-      links: links.map((d) => ({ ...d })),
+      nodes: nodes.map(d => ({ ...d })),
+      links: links.map(d => ({ ...d })),
     });
 
+    // @ts-ignore
+    const dMax = Math.max(...(nRaw as any[]).map(n => n.depth ?? 0));
+
     type LaidOutNode = SankeyNode<NodeDatum, LinkDatum> & {
-      x0: number; x1: number; y0: number; y1: number;
-      value: number;
+      x0: number; x1: number; y0: number; y1: number; value: number; depth?: number;
     };
     type LaidOutLink = SankeyLink<NodeDatum, LinkDatum> & { width: number };
 
     return {
       layoutNodes: nRaw as LaidOutNode[],
       layoutLinks: lRaw as LaidOutLink[],
+      maxDepth: dMax,
     };
-  }, [nodes, links, iw, ih]);
+  }, [nodes, links, iw, ih, nodeWidth, nodePadding]);
+
+  const clipId = useMemo(() => `clip-${Math.random().toString(36).slice(2)}`, []);
+
+  // Cheap text width estimator (good enough for placement decisions)
+  const textWidth = (s: string, fs: number) => s.length * fs * 0.58;
+
+  // Clamp helper within the full card (including gutters)
+  const clamp = (v: number, min: number, max: number) => Math.max(min, Math.min(max, v));
 
   return (
-    <svg width={width} height={height} style={{ display: "block", background }}>
-      <g transform={`translate(${margin.left},${margin.top})`}>
-        {/* Links */}
-        <g fill="none" strokeOpacity={0.7}>
-          {layoutLinks.map((link, i) => {
-            const pathGen = sankeyLinkHorizontal<
-              (typeof layoutNodes)[number],
-              (typeof layoutLinks)[number]
-            >();
-            const d = pathGen(link) || "";
-            const stroke = linkColors[i % linkColors.length];
-            const strokeWidth = Math.max(1, link.width);
-            return (
-              <path key={i} d={d} stroke={stroke} strokeWidth={strokeWidth}>
-                <title>
-                  {`${(link.source as any).name} → ${(link.target as any).name}: ${link.value}`}
-                </title>
-              </path>
-            );
-          })}
+    <div
+      style={{
+        position: "relative",
+        width,
+        height,
+        background: cardBackground,
+        borderRadius: cardRadius,
+        overflow: "hidden",
+      }}
+    >
+      <svg
+        width="100%"
+        height="100%"
+        viewBox={`0 0 ${width} ${height}`}
+        preserveAspectRatio="xMidYMid meet"
+        style={{ display: "block" }}
+        shapeRendering="geometricPrecision"
+      >
+        <defs>
+          <clipPath id={clipId}>
+            <rect x={0} y={0} width={width} height={height} rx={cardRadius} ry={cardRadius} />
+          </clipPath>
+        </defs>
+
+        <g clipPath={`url(#${clipId})`}>
+          {/* shift so x=0 aligns to the left gutter start */}
+          <g transform={`translate(${leftPad},${topPad})`}>
+            {/* Links */}
+            <g fill="none" strokeOpacity={0.9}>
+              {layoutLinks.map((link, i) => {
+                const d = sankeyLinkHorizontal<any, any>()(link) || "";
+                const stroke = linkColors[i % linkColors.length];
+                return <path key={i} d={d} stroke={stroke} strokeWidth={Math.max(1, link.width)} />;
+              })}
+            </g>
+
+            {/* Nodes + smart labels */}
+            <g>
+              {layoutNodes.map((node, i) => {
+                const { x0, x1, y0, y1, value } = node;
+                const name = (node as any).name as string;
+                const w = Math.max(1, x1 - x0);
+                const h = Math.max(1, y1 - y0);
+
+                // prefer inside, but fall back to gutter if text won't fit
+                const label = `${name} ${value}`;
+                const fitsInside = insideLabels && textWidth(label, fontSize) <= (w - 8);
+
+                // which column?
+                // @ts-ignore
+                const depth = node.depth ?? 0;
+                const isLeftCol  = depth === 0 || x0 <= 1;
+                const isRightCol = depth === maxDepth || x1 >= iw - 1;
+
+                let lx = (x0 + x1) / 2;            // default to center
+                let ly = (y0 + y1) / 2;
+                let anchor: "start" | "middle" | "end" = "middle";
+                let fill = "#fff";
+
+                if (!fitsInside) {
+                  if (isLeftCol) {
+                    // place in LEFT gutter near node
+                    lx = x0 - 8;
+                    anchor = "end";
+                    fill = "#E6E8EB";
+                    // Clamp within left gutter bounds
+                    lx = clamp(lx, -labelGutterLeft + 4, x0 - 4);
+                  } else if (isRightCol) {
+                    // place in RIGHT gutter near node
+                    lx = x1 + 8;
+                    anchor = "start";
+                    fill = "#E6E8EB";
+                    lx = clamp(lx, x1 + 4, iw + labelGutterRight - 4);
+                  } else {
+                    // middle columns: keep centered (best we can do)
+                    anchor = "middle";
+                  }
+                }
+
+                return (
+                  <g key={i}>
+                    <rect x={x0} y={y0} width={w} height={h} rx={2} ry={2} fill={nodeColor} opacity={0.9} />
+                    <text
+                      x={lx}
+                      y={ly}
+                      dy="0.35em"
+                      textAnchor={anchor}
+                      fontSize={fontSize}
+                      fill={fill}
+                      style={{ pointerEvents: "none", userSelect: "none" }}
+                    >
+                      {label}
+                    </text>
+                  </g>
+                );
+              })}
+            </g>
+          </g>
         </g>
-
-        {/* Nodes */}
-        <g>
-          {layoutNodes.map((node, i) => {
-            const { x0, x1, y0, y1, name, value } = node;
-            const w = Math.max(1, x1 - x0);
-            const h = Math.max(1, y1 - y0);
-
-            return (
-              <g key={i}>
-                <rect
-                  x={x0}
-                  y={y0}
-                  width={w}
-                  height={h}
-                  fill={nodeColor}
-                  opacity={0.9}
-                  stroke="#000"
-                >
-                  <title>{`${name}: ${value}`}</title>
-                </rect>
-
-                {/* Node label */}
-                <text
-                  x={x0 < iw / 2 ? x0 - 8 : x1 + 8}
-                  y={(y0 + y1) / 2}
-                  dy="0.35em"
-                  textAnchor={x0 < iw / 2 ? "end" : "start"}
-                  fontSize={13}
-                  fill="#111"
-                >
-                  {`${name} ${value}`}
-                </text>
-              </g>
-            );
-          })}
-        </g>
-      </g>
-    </svg>
+      </svg>
+    </div>
   );
 };

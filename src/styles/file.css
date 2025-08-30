@@ -1,3 +1,21 @@
-.cla-rc {
-    display: flex;
+.fl-r {
+grid-template-columns: [viewport-start] minmax(0, 1fr) [header-start] 200px 
+[content-start] 600px [header-end content-end] minmax(0, 1fr) [viewport-end]; 
+grid-template-rows: [content-start] auto [content-end];
+grid-auto-rows: auto;
+}
+.fl-dec {
+grid-column: 1 / -1;
+grid-row: 1;
+display: flex
+}
+.fl-cc {
+grid-column: content-start / content-end;
+grid-row: 1;
+}
+.fl-t {
+   background: -webkit-linear-gradient(45deg, #E07A5F, #E07A5F, #CC0000, #FF3300, #FF8000, #FFB300, #FF9900, #FFB300, #FFCC33);
+}
+.fl-t h2 {
+color: white;
 }

@@ -11,7 +11,6 @@ return (
           <span className="dcr-1p0hins">glp Justice</span>
         </a>
       </div>
-
       <input
         type="checkbox"
         id="header-nav-input-checkbox"
@@ -32,6 +31,7 @@ return (
             ['/profile', 'Profile'],
             ['/services', 'Services'],
             ['/resources', 'Resources'],
+            ['/sandbox', 'Sandbox']
           ].map(([href, label]) => (
             <li
               className={

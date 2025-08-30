@@ -10,13 +10,17 @@ function Home() {
         <React.Fragment>  
             <Navigation/>
             <div className="home-campaign-qph overflow-afe" id="campaign-root">
+                
+                
+                
                 <div className="hdr-gr">
-                    <h1>Do you feel as if you have been affected by <span><img className="img-in" width="80" height="80" src={ozempic} /></span> or other drugs that are similar to such?</h1>
+                    <h1>Do you feel as if you have been affected by <span>
+                    <img className="img-in" width="80" height="80" src={ozempic} />
+                    </span> or other drugs that are similar to such?</h1>
                 </div>
 
                 <div className="container-je6">
-                   
-
+                
                     <div className="init ml-adj d-itj pt-sm-gxn">
                        
                        
@@ -59,6 +63,9 @@ function Home() {
                     </div>
                      */ }
                     </div>
+
+
+                    
                     <div className="d-6fb position-4nl build-in-qxd">
 
                         <div className="col-wsx d-6fb column-vo5 item-skx">
@@ -129,6 +136,10 @@ function Home() {
                         </div>
                     </div>
                 </div>
+
+
+
+
             </div>
         <Footer/>                
         </React.Fragment>

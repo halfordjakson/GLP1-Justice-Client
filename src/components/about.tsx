@@ -6,16 +6,22 @@ import "../styles/about.css";
 export default function About() {
     return (
         <React.Fragment>
-        <Navigation/>
-        <div className="ab-rc">
-        <div className="ab-ht">
-        <div className="ab-ht-dec">
-        <h1> Frequently Asked Questions</h1>
-        </div>
-        </div>
-        <Accordion/>
-        </div>
-        <Footer/>
+            <Navigation />
+            <div className="ab-r">
+                <div className="ab-dec"></div>
+                    <div className="ab-t">
+                        <h2>FAQ (Frequently Asked Questions)</h2>
+                        </div>
+                    <div className="ab-cc">
+                        <div className="ab-c">
+                            <div className="ab-fv">
+                            <Accordion />
+                            </div>
+                        </div>
+                    </div>
+                
+            </div>
+            <Footer />
         </React.Fragment>
     );
 };
