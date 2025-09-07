@@ -126,7 +126,6 @@ export const SankeyDiagram: React.FC<SankeyDiagramProps> = ({
         width,
         height,
         background: cardBackground,
-        borderRadius: cardRadius,
         overflow: "hidden",
       }}
     >

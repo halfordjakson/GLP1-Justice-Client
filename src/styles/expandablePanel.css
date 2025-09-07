@@ -1,0 +1,130 @@
+:root {
+  --brand: #ff4d00;
+  --ink: #1c1c1c;
+  --card-bg: #fff;
+  --ring: rgba(255, 77, 0, 0.35);
+  --radius: 14px;
+}
+
+/* GRID — lets children reflow and fill holes; neighbors will “minimize” */
+.xc-grid {
+  display: grid;
+  gap: 28px;
+  grid-auto-flow: dense; /* tighter packing when one card spans multiple cols */
+}
+
+/* CARD */
+.xc-card {
+  background: var(--card-bg);
+  border: 2px solid var(--brand);
+  border-radius: var(--radius);
+  overflow: hidden;            /* keep rounded corners during animation */
+  min-inline-size: 180px;      /* sync with minColPx default */
+  box-shadow: 0 1px 0 rgba(0,0,0,.02);
+}
+
+/* when open, expand horizontally by spanning more columns */
+.xc-card.span-2 { grid-column: span 2; }
+
+/* On very large displays you can let it span 3 columns */
+@media (min-width: 1200px) {
+  .xc-card.span-2 { grid-column: span 3; }
+}
+
+/* On narrow screens, stack and let open card take the full row */
+@media (max-width: 700px) {
+  .xc-grid { grid-template-columns: 1fr !important; }
+  .xc-card.span-2 { grid-column: 1 / -1; }
+}
+
+/* HEADER BUTTON */
+.xc-head {
+  appearance: none;
+  width: 100%;
+  padding: 22px 20px;
+  display: grid;
+  grid-template-columns: auto 1fr auto;
+  gap: 12px;
+  align-items: center;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  text-align: left;
+  font-weight: 800;
+  font-size: 1.55rem;
+  color: var(--ink);
+}
+
+.xc-head:focus-visible {
+  outline: 0;
+  box-shadow: 0 0 0 4px var(--ring);
+  border-radius: calc(var(--radius) - 2px);
+}
+
+.xc-ic { font-size: 1.2rem; line-height: 1; }
+.xc-title { line-height: 1.15; }
+.xc-chev { transition: transform .2s ease; }
+.xc-card.is-open .xc-chev { transform: rotate(180deg); }
+
+/* REVEAL PANEL */
+.xc-panel {
+  border-top: 1px solid rgba(0,0,0,.06);
+  background: linear-gradient(0deg, #fff, #fff),
+              radial-gradient(150% 60% at 50% 0%, rgba(255,77,0,0.06), transparent 60%);
+}
+
+/* Ensure readable measure:
+   - min-inline-size guarantees at least ~100px line width
+   - max-inline-size caps overly long lines when a card spans wide */
+.xc-panel-inner {
+  padding: 18px 20px 22px;
+  min-inline-size: 100px;  /* ✅ requested minimum line width */
+  max-inline-size: 60ch;   /* optional: comfortable max measure */
+  color: #2a2a2a;
+  line-height: 1.55;
+}
+
+.xc-panel-inner p { margin: 0 0 12px; }
+.xc-panel-inner ul { margin: 0; padding-left: 1.2rem; }
+.xc-panel-inner a {
+  color: var(--brand);
+  text-decoration: none;
+  border-bottom: 1px solid rgba(255,77,0,.35);
+}
+.xc-panel-inner a:hover { border-bottom-color: currentColor; }
+/* images/group inside the expanded panel */
+.xc-media {
+  display: grid;
+  gap: 12px;
+  margin: 8px 0 12px;
+}
+
+.xc-fig { margin: 0; }
+.xc-fig img { width: 100%; height: auto; display: block; border-radius: 12px; }
+
+/* optional caption style */
+.xc-cap {
+  margin-top: 6px;
+  font-size: 0.9rem;
+  color: #667085;
+}
+
+/* simple alignment helpers */
+.align-left   { margin-inline-end: auto; }
+.align-right  { margin-inline-start: auto; }
+.align-center { margin-inline: auto; }
+/* 1) A reusable "side-by-side" layout for any open panel */
+.xc-card[data-state="open"] .my-split {
+  display: grid;
+  grid-template-columns: 280px 1fr;  /* image | text */
+  gap: 16px;
+  align-items: start;
+}
+
+.xc-card[data-state="open"] .my-split .img {
+  width: 100%;
+  height: auto;
+  border-radius: 12px;
+  object-fit: cover;
+}
+

@@ -8,6 +8,7 @@ import About from "./components/about";
 import Services from "./components/services";
 import Resources from "./components/resources";
 import Sandbox from "./components/sandbox";
+import './index.css';
 import { pdfjs } from 'react-pdf';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 const router = createBrowserRouter([{ path: "/services", element: <Services /> },

@@ -1,18 +1,67 @@
 .srv-r {
-    display: grid;
-    grid-template-columns: [viewport-start] minmax(0, 1fr) 
-    [services-start] 800px [services-end] minmax(0, 1fr) [viewport-end];
-    grid-auto-rows: auto;
-}
-.srv-dec {
-    display: contents;
-    grid-row: 1;
-    grid-column: 1 / -1;
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
 }
 .srv-t {
-    grid-column: viewport-start / viewport-end;
-    grid-row: 1;
     color: white;
     display: block;
     background: -webkit-linear-gradient(45deg, #E07A5F, #E07A5F, #CC0000, #FF3300, #FF8000, #FFB300, #FF9900, #FFB300, #FFCC33);
+}
+.srv-cr {
+    display: flex;
+    gap: 1rem;
+    flex-direction: row-reverse;
+}
+.srv-cc {
+    margin-left: 1rem;
+    display: flex;
+    -webkit-display: flex;
+    gap: 5rem;
+    justify-content: center;
+    flex-direction: row-reverse;
+}
+.srv-i {
+    grid-column: services-end / viewport-end;
+    grid-row: 2;
+}
+.srv-g {
+    display: flex; 
+    flex-direction: column;
+    flex: 1;
+}
+.srv-gi {
+    max-width: 100%;
+}
+.srv-c {
+    display: flex;
+    flex-wrap: wrap;
+    flex: 1;
+    gap: 1rem;
+}
+.srv-it {
+    cursor: pointer;
+    outline: none; 
+    border: 1px solid #FF4D00;
+    padding: 1rem;
+    border-radius: 0.25rem;
+    background-color: white;
+}
+.srv-ici h3 {
+    font-weight: 600;
+}
+.xc-title {
+    font-size: 1.2rem;
+}
+/* Auxiliary styles definiton */
+.ail-b {
+    font-weight: 1000;
+}
+.b-r {
+    font-weight: 1000;
+    color: red;
+}
+.b-yo {
+    font-weight: 1000;
+    color: #FF8000;
 }

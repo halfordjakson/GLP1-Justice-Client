@@ -13,7 +13,6 @@ export type X = number | Date;
 export interface Point { x: X; y: number; }
 export type Cursor = { x: number; y: number; domainX: X; domainY: number };
 type RangeKey = '1W' | '1M' | '3M' | '6M' | 'YTD' | '1Y' | 'ALL';
-
 interface Props {
   data: Point[];
   width: number;
@@ -44,17 +43,14 @@ export default function ClaimsChart({
     setCursor(c);
     onCursorChange?.(c);
   };
-
   // layout: buttons row + derived chart height
   const buttonsRow = 40;
   const chartH = Math.max(0, height - buttonsRow);
-
   // ==========================
   // Range selection (time only)
   // ==========================
   const [range, setRange] = useState<RangeKey>('ALL');
   const isTime = data.length > 0 && data[0].x instanceof Date;
-
   const filteredData = useMemo(() => {
     if (!isTime || data.length === 0) return data;
     const sorted = [...data].sort((a, b) => +a.x - +b.x);
@@ -213,7 +209,6 @@ export default function ClaimsChart({
         width,
         height,
         background: '#F8F9FA',
-        borderRadius: 16,
         display: 'grid',
         gridTemplateRows: `${buttonsRow}px 1fr`, // buttons row + chart
         gap: 4,
@@ -226,7 +221,7 @@ export default function ClaimsChart({
           alignItems: 'center',
           padding: '6px 8px',
           gap: 8,
-          overflowX: 'auto',
+          overflow: "hidden",
         }}
       >
         {isTime ? (
@@ -239,7 +234,7 @@ export default function ClaimsChart({
                 borderRadius: 999,
                 border: '1px solid ' + (range === r ? accent : '#2A2F3A'),
                 background: range === r ? 'rgba(255,77,0,0.1)' : 'transparent',
-                color: '#E6E8EB',
+                color: '#FF4D00',
                 fontSize: 12,
                 cursor: 'pointer',
                 whiteSpace: 'nowrap',

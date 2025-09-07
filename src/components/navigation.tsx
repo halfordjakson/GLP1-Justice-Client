@@ -26,7 +26,7 @@ return (
       <div className="dcr-18nbak">
         <ul className="dcr-1d6g26q">
           {[
-            ['/file',  'File a Claim Inquiry'],
+            ['/file',  'File'],
             ['/about',  'About'],
             ['/profile', 'Profile'],
             ['/services', 'Services'],

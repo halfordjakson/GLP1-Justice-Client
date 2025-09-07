@@ -46,6 +46,7 @@
 .acchdr h1 {
   font-size: 1rem;
   padding: 1rem; 
+  color: white;
 }
 
 .acchdr.open {

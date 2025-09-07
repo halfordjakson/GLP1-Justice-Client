@@ -2,7 +2,6 @@
   font-family: "Work Sans" !important;
   font-weight: 500;
 }
-
 body {
   /* CSS Variables that may have been missed get put on body */
   --fgColor-default: #e6edf3;
@@ -407,14 +406,6 @@ html {
   flex-direction: column;
   gap: 2rem;
 }
-
-h4 {}
-
-#campaign-root {
-  background-blend-mode: multiply;
-  background: linear-gradient(220deg, #FF4D00, #FF9466, #992E00, #00B2FF, #006B99) !important;
-}
-
 .cam-title {
   color: white;
 }
