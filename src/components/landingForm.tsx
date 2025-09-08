@@ -13,8 +13,20 @@ const LandingForm: React.FC = () => {
     document.body.appendChild(script);
 
     // Listen for Tally form submission event
+
     const handleMessage = (event: MessageEvent) => {
-      if (event.data?.eventName === 'Tally.FormSubmitted') {
+      console.log('[Tally Debug] Received postMessage:', event);
+      let data = event.data;
+      // If data is a string, try to parse as JSON
+      if (typeof data === 'string') {
+        try {
+          data = JSON.parse(data);
+        } catch (e) {
+          // Not JSON, ignore
+        }
+      }
+      if (data && data.event === 'Tally.FormSubmitted') {
+        console.log('[Tally Debug] Tally.FormSubmitted event detected, navigating to /home');
         navigate('/home');
       }
     };
