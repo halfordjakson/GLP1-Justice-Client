@@ -44,7 +44,7 @@ export function FormViewer() {
     // Send data to Flask backend
     console.log('onFinish called with data:', data);
     try {
-      const response = await fetch('https://glp-1-lead-collection-backend.onrender.com/webhook', {
+  const response = await fetch(import.meta.env.VITE_API_URL, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify(data)
@@ -159,6 +159,21 @@ export function FormViewer() {
             </button>
             <button type="submit" className="fv-submit">
               Generate PDF
+            </button>
+            {/* TEMP: Test button to call onFinish directly */}
+            <button
+              type="button"
+              style={{ marginLeft: 8, background: '#f90', color: '#fff' }}
+              onClick={() => onFinish({
+                firstName: 'Test',
+                lastName: 'User',
+                email: 'test@example.com',
+                zip: '12345',
+                drug: 'TestDrug',
+                hospitalized: 'No'
+              })}
+            >
+              Test POST
             </button>
           </div>
         )}
