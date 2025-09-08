@@ -1,14 +1,7 @@
-import React from 'react';
+// ...existing code...
 import "../styles/footer.css";
 const Footer = () => {
-  const helpfulLinks = [
-    { href: '/patients/report-a-side-effect', label: 'File a Claim' },
-    { href: '/patients', label: 'Customer Support' },
-    { href: '/contact', label: 'Contact us' },
-    { href: '/resources/information', label: 'Information Resources' },
-    { href: '/resources/health', label: 'Health Resources' },
-    { href: '/live', label: 'Speak with a live agent' },
-  ];
+  // ...existing code...
 
   const socialLinks = [
     { href: '/privacy/social', label: 'Social media community guidelines' },

@@ -1,5 +1,5 @@
 // profile.tsx
-import React, { useEffect, useRef, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import Navigation from './navigation';
 import Footer from './footer';
 import ClaimsChart, { type Point } from './chart';

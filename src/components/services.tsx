@@ -1,5 +1,5 @@
 // services.tsx
-import React from "react";
+// ...existing code...
 import Navigation from "./navigation";
 import Footer from "./footer";
 import ExpandablePanel, { type CardSpec, type PanelSection } from "./expandablePanel";

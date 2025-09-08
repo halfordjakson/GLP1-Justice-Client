@@ -1,7 +1,6 @@
-import React, { useState } from 'react';
+import { Link } from 'react-router-dom';
 import '../styles/navigation.css';
-import glpJustice from "../assets/glp-justice-default-08072025.png"
-import { Link } from 'react-router-dom'; 
+import glpJustice from "../assets/glp-justice-default-08072025.png";
 export default function Navigation() {
 return (
     <nav className="dcr-5k6jfi snipcss-v6Fa8 style-Y8dkI" id="style-Y8dkI">

@@ -1,5 +1,5 @@
 // Accordion.tsx
-import React, { useState, useCallback, type JSX } from 'react';
+import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 import { accordionItems } from '../types/types';
 import '../styles/accordion.css';
