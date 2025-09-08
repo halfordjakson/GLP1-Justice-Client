@@ -7,6 +7,7 @@ export interface FieldDef {
   name: string;
   label: string;
   type: 'text' | 'email' | 'number' | 'date' | 'tel' | 'url' | 'password';
+  required?: boolean;
   layout?: {
     x?: string; // X position in inches
     y?: string; // Y position in inches

@@ -1,5 +1,5 @@
 // FormViewer.tsx
-import React, { useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useForm, Controller } from 'react-hook-form';
 import type { FieldValues } from 'react-hook-form';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -40,7 +40,24 @@ export function FormViewer() {
   // From the submit screen, go back to the last field
   const goToLastField = () => setActiveIdx(fields.length - 1);
   // Final PDF generation: reuse the same HTML preview
-  const onFinish = (data: Record<string, string>) => {
+  const onFinish = async (data: Record<string, string>) => {
+    // Send data to Flask backend
+    console.log('onFinish called with data:', data);
+    try {
+  const response = await fetch(import.meta.env.VITE_API_URL, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(data)
+      });
+      if (!response.ok) {
+        throw new Error('Failed to submit lead');
+      }
+      // Optionally, show a success message or reset the form
+      alert('Lead submitted successfully!');
+    } catch (err) {
+      alert('Error submitting lead: ' + err);
+    }
+    // Also generate PDF as before
     const doc = new jsPDF({ unit: 'in', format: 'letter' });
     fields.forEach((fld, i) => {
       const x = fld.layout?.x ? parseFloat(fld.layout.x) : 1;
@@ -142,6 +159,21 @@ export function FormViewer() {
             </button>
             <button type="submit" className="fv-submit">
               Generate PDF
+            </button>
+            {/* TEMP: Test button to call onFinish directly */}
+            <button
+              type="button"
+              style={{ marginLeft: 8, background: '#f90', color: '#fff' }}
+              onClick={() => onFinish({
+                firstName: 'Test',
+                lastName: 'User',
+                email: 'test@example.com',
+                zip: '12345',
+                drug: 'TestDrug',
+                hospitalized: 'No'
+              })}
+            >
+              Test POST
             </button>
           </div>
         )}
