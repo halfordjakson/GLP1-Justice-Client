@@ -4,14 +4,16 @@ import Navigation from "./navigation";
 import Footer from "./footer";
 import ExpandablePanel, { type CardSpec, type PanelSection } from "./expandablePanel";
 import "../styles/services.css";
-import ex from "../assets/expand.png";
-import rd from "../assets/collapse.png";
+import expand from "../assets/expand.png";
+import collapse from "../assets/collapse.png";
 import srvg02 from "../assets/srv-g-02.png";
 import supig13f from "../assets/supig13f.png";
 import supig14f from "../assets/supig14f.png";
 import supig15f from "../assets/supig15f.png";
 import supig16f from "../assets/supig16f.png";
 import supig17f from "../assets/supig17f.png";
+import supig18f from "../assets/supig18f.png";
+import supig19f from "../assets/supig19f.png";
 import "../styles/expandablePanel.css";
 /** Author rows as (image + copy); panel enforces 1:1 images */
 type CardData = {
@@ -21,11 +23,14 @@ type CardData = {
   sections?: PanelSection[];
 };
 export default function Services() {
-  const CARD_DATA: CardData[] = [
+  const cards: CardData[] = [
     {
       id: "elig-1",
       title: "Eligibility",
-      blurb: "You can be eligible for compensation through a variety of means. Here are a few.",
+      blurb: `Eligibility is ultimately 
+      the determining factor for compensation. 
+      Eligibility is the tailored criterion that describes 
+      issues that arise from the use of "GLP-1" drugs.`,
       sections: [
         {
           side: "right",
@@ -166,17 +171,49 @@ export default function Services() {
     {
       id: "elig-2",
       title: "Medical History",
-      blurb: "Summarize relevant history to help triage your case.",
+      blurb: `Your medical history is integral 
+            for determining eligibility for compensation 
+            let alone prescription. Medical history serves as 
+            the basis of determination for that of the rightful 
+            possession and administration of "GLP-1" drugs`,
       sections: [
         {
           side: "right",
-          img: { src: supig16f || "", alt: "Medical History", widthPx: 300 },
+          img: { src: supig19f || "", alt: "Medical History", widthPx: 300 },
           copy: (
-            <ul>
-              <li>Prior conditions</li>
-              <li>Current prescriptions</li>
-              <li>Known allergies</li>
-            </ul>
+            <>
+            <h2>Inpermissible Prescription</h2>
+            <br/>
+            <p> Were you told that you were eligible for a prescription for a "GLP-1" schedule drug? 
+            Did you consume the drug according to the specified regiment and succumb to adverse effects from such? 
+            Did you later discover that the drug was not authorized for your taking from the outset?</p>
+            <h3>Supporting Circumstances</h3>
+            <p><em>Unauthorized Personnel</em>: Unauthorized personnel could be the primary reason as 
+            to why you have managed to secure "GLP-1" drugs without being predisposed for such. Unauthorized personnel are prone to 
+            making costly mistakes that could result in disaster for all parties involved. </p>
+            <div style={{
+            backgroundColor: "#FFD1B2",
+            outline: "none",
+            borderLeft: "2px solid #FF4D00",
+            borderTopLeftRadius: "2px",
+            padding: "1rem"
+            }}>
+              <h3><span className="prefix-em">D</span>id you know?</h3>
+              <br/>
+              <p>Two physicians from the state of 
+              Texas were accused of issuing thousands of 
+              prescriptions to patients without due process. 
+              The drugs prescribed were described as being the<em> trinity </em>  
+              (a crude, mocking dig on GOD, the Holy Spirit, and Jesus Christ) in 
+              that they were all used in 
+              succession of one another. This strengthens the fact 
+              that clincal malpractice and unauthorized prescriptions 
+              are a legitimate issue in today's society.</p>
+            </div>
+            <h2>Oustanding Regiments</h2>
+            <p> Outstanding regiments in this context refers to substances that were an existing component of your regiment </p>
+          
+            </>
           ),
         },
       ],
@@ -208,7 +245,7 @@ export default function Services() {
     { id: "elig-8", title: "FAQ", blurb: "Common questions and answers." },
   ];
 
-  const items: CardSpec[] = CARD_DATA.map((d) => ({
+  const items: CardSpec[] = cards.map((d) => ({
     id: d.id,
     title: d.title,
     intro: d.blurb ? <p style={{ margin: 0 }}>{d.blurb}</p> : undefined,
@@ -242,8 +279,8 @@ export default function Services() {
                 items={items}
                 columns={4}
                 singleOpen
-                indicatorCollapsedSrc={ex}
-                indicatorExpandedSrc={rd}
+                indicatorCollapsedSrc={expand}
+                indicatorExpandedSrc={collapse}
                 indicatorSize={22}
               />
             </div>
