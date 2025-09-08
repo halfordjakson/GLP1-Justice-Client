@@ -1,6 +1,6 @@
 // chart.helpers.ts
 import * as d3 from 'd3';
-import { Point, X, Margin } from '../types/chart.types';
+import type { Point, X, Margin } from '../types/chart.types';
 
 export const isTimeSeries = (data: Point[]) =>
   data.length > 0 && data[0].x instanceof Date;
@@ -12,11 +12,11 @@ export function makeXScale(
 ): d3.ScaleTime<number, number> | d3.ScaleLinear<number, number> {
   const range: [number, number] = [margin.left, width - margin.right];
   if (isTimeSeries(data)) {
-    const dom = d3.extent(data, d => d.x as Date) as [Date, Date];
-    return d3.scaleTime().domain(dom).range(range);
+  const dom = d3.extent(data, d => d.x as Date) as [Date, Date];
+  return d3.scaleTime().domain(dom).range(range);
   } else {
-    const dom = d3.extent(data, d => d.x as number) as [number, number];
-    return d3.scaleLinear().domain(dom).range(range);
+  const dom = d3.extent(data, d => d.x as number) as [number, number];
+  return d3.scaleLinear().domain(dom).range(range);
   }
 }
 
@@ -39,10 +39,15 @@ export function buildLinePath(
   yScale: d3.ScaleLinear<number, number>,
   curve: d3.CurveFactory = d3.curveLinear
 ) {
-  return d3.line<Point>()
-    .x(d => xScale(d.x as any))
-    .y(d => yScale(d.y))
-    .curve(curve)(data) || '';
+  return (
+    d3.line<Point>()
+      .x(d => {
+        const v = xScale(d.x as any);
+        return typeof v === 'number' && !isNaN(v) ? v : 0;
+      })
+      .y(d => yScale(d.y))
+      .curve(curve)(data) ?? ''
+  );
 }
 
 export function buildAreaPath(
@@ -51,11 +56,16 @@ export function buildAreaPath(
   yScale: d3.ScaleLinear<number, number>,
   curve: d3.CurveFactory = d3.curveLinear
 ) {
-  return d3.area<Point>()
-    .x(d => xScale(d.x as any))
-    .y0(yScale(yScale.domain()[0]))
-    .y1(d => yScale(d.y))
-    .curve(curve)(data) || '';
+  return (
+    d3.area<Point>()
+      .x(d => {
+        const v = xScale(d.x as any);
+        return typeof v === 'number' && !isNaN(v) ? v : 0;
+      })
+      .y0(() => yScale(yScale.domain()[0]))
+      .y1(d => yScale(d.y))
+      .curve(curve)(data) ?? ''
+  );
 }
 
 export function labelForTimeTick(d: Date, scale: d3.ScaleTime<number, number>) {
