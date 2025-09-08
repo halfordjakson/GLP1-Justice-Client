@@ -1,7 +1,10 @@
 // components/LandingForm.tsx
 import React, { useEffect } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const LandingForm: React.FC = () => {
+  const navigate = useNavigate();
+
   useEffect(() => {
     // Dynamically load the Tally embed script
     const script = document.createElement('script');
@@ -9,10 +12,19 @@ const LandingForm: React.FC = () => {
     script.async = true;
     document.body.appendChild(script);
 
+    // Listen for Tally form submission event
+    const handleMessage = (event: MessageEvent) => {
+      if (event.data?.eventName === 'Tally.FormSubmitted') {
+        navigate('/home');
+      }
+    };
+    window.addEventListener('message', handleMessage);
+
     return () => {
       document.body.removeChild(script);
+      window.removeEventListener('message', handleMessage);
     };
-  }, []);
+  }, [navigate]);
 
   return (
     <div style={{ width: '100vw', height: '100vh', margin: 0, padding: 0, overflow: 'hidden', position: 'relative' }}>
