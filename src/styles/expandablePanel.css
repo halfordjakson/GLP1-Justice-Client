@@ -127,4 +127,15 @@
   border-radius: 12px;
   object-fit: cover;
 }
-
+.btn-pagi {
+  outline: none;
+  border: none;
+  border-radius: 0.25rem;
+  padding: 1rem;
+  background-color: #FF4D00;
+  color: white;
+  font-family: "Work Sans";
+}
+.btn-pagi h3 {
+  font-size: 0.75rem !important;
+}

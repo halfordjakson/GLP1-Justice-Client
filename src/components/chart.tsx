@@ -58,7 +58,7 @@ export default function ClaimsChart({
 
     const startOfYear = new Date(lastDate.getFullYear(), 0, 1);
 
-    const cutoffs: Record<Exclude<RangeKey, 'ALL' | 'YTD'>, number> = {
+    const cutoffs: Record<Exclude<RangeKey, 'ALL' | 'YTD'>, number> = { 
       '1W': 7,
       '1M': 30,
       '3M': 90,
