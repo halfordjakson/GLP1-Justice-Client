@@ -1,5 +1,4 @@
 // services.tsx
-import React from "react";
 import Navigation from "./navigation";
 import Footer from "./footer";
 import ExpandablePanel, { type CardSpec, type PanelSection } from "./expandablePanel";
@@ -10,11 +9,7 @@ import srvg02 from "../assets/srv-g-02.png";
 import supig13f from "../assets/supig13f.png";
 import supig14f from "../assets/supig14f.png";
 import supig15f from "../assets/supig15f.png";
-import supig16f from "../assets/supig16f.png";
 import supig17f from "../assets/supig17f.png";
-import supig18f from "../assets/supig18f.png";
-import supig19f from "../assets/supig19f.png";
-import supig20f from "../assets/supig20f.png";
 import supig22f from "../assets/supig22f.png";
 import "../styles/expandablePanel.css";
 /** Author rows as (image + copy); panel enforces 1:1 images */
