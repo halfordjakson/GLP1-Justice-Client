@@ -25,10 +25,10 @@ return (
       <div className="dcr-18nbak">
         <ul className="dcr-1d6g26q">
           {[
-            ['/file',  'File'],
-            ['/about',  'About'],
+            ['/file',  'Newsletter'],
+            ['/about',  "FAQ's"],
             // ['/profile', 'Profile'],
-            ['/services', 'Services'],
+            ['/services', 'Eligibility & Next Steps'],
             ['/resources', 'Resources'],
             ['/sandbox', 'Sandbox']
           ].map(([href, label]) => (

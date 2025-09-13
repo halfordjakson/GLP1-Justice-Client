@@ -336,7 +336,7 @@ export default function Services() {
   return (
     <>
       <Navigation />
-      <div className="highlight-bar">Services</div>
+  <div className="highlight-bar">Eligibility & Next Steps</div>
       <div className="srv-r">
         <div className="srv-cr">
           <div className="srv-i">
