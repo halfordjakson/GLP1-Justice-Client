@@ -38,7 +38,7 @@ const Home: React.FC = () => {
                         If you’ve experienced side effects from GLP-1 drugs, you may qualify for compensation. Click below to get started.
                     </p>
                     <button
-                        style={{ fontSize: '1.1rem', padding: '0.75rem 2.5rem', background: '#2b6cb0', color: '#fff', border: 'none', borderRadius: 8, cursor: 'pointer', fontWeight: 600 }}
+                        style={{ fontSize: '1.1rem', padding: '0.75rem 2.5rem', background: '#052962', color: '#fff', border: 'none', borderRadius: 8, cursor: 'pointer', fontWeight: 600 }}
                         onClick={() => navigate('/landing')}
                     >
                         Start Now
