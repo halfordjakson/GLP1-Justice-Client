@@ -364,14 +364,15 @@ export default function Services() {
       <Navigation />
       <div className="srv-r">
         <div className="highlight-bar">Resources</div>
-        <div className="srv-cc" style={{ justifyContent: 'center' }}>
-          <div className="srv-c">
+        <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
+          <div style={{ maxWidth: 1200, width: '100%' }}>
             <ExpandablePanel
               items={items}
               singleOpen
               indicatorCollapsedSrc={expand}
               indicatorExpandedSrc={collapse}
               indicatorSize={22}
+              minColPx={320}
             />
           </div>
         </div>
