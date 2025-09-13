@@ -11,9 +11,6 @@ export default function File() {
             <div className="highlight-bar">File a Claim</div>
             <div className="fl-r">
                 <div className="fl-dec"></div>
-                <div className="fl-t">
-                    <h2>File</h2>
-                </div>
                 <div className="fl-cc">
                     <div className="fl-c">
                         <div className="fl-f">
