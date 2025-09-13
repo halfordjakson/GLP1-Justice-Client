@@ -230,7 +230,7 @@ export default function Services() {
               indicatorCollapsedSrc={expand}
               indicatorExpandedSrc={collapse}
               indicatorSize={22}
-              minColPx={260}
+              // minColPx removed: no longer a valid prop
               openMode="fullrow"
             />
         </div>
