@@ -4,6 +4,7 @@ import Navigation from "./navigation";
 import Footer from "./footer";
 import ExpandablePanel, { type CardSpec, type PanelSection } from "./expandablePanel";
 import "../styles/services.css";
+import "../styles/about.css";
 import expand from "../assets/expand.png";
 import collapse from "../assets/collapse.png";
 import srvg02 from "../assets/srv-g-02.png";
@@ -335,12 +336,8 @@ export default function Services() {
   return (
     <>
       <Navigation />
+      <div className="highlight-bar">Services</div>
       <div className="srv-r">
-        <div className="srv-t">
-          <h2>
-            <span className="cap-a">S</span>ervices
-          </h2>
-        </div>
         <div className="srv-cr">
           <div className="srv-i">
             <div className="srv-g">
