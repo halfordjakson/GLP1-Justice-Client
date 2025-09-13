@@ -384,7 +384,6 @@ export default function Services() {
             <div className="srv-c">
               <ExpandablePanel
                 items={items}
-                columns={4}
                 singleOpen
                 indicatorCollapsedSrc={expand}
                 indicatorExpandedSrc={collapse}
