@@ -14,13 +14,13 @@ import { pdfjs } from 'react-pdf';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 const router = createBrowserRouter([
   { path: "/", element: <App /> },
-  { path: "/form", element: <LandingForm /> },
   { path: "/about", element: <About /> },
   { path: "/profile", element: <Profile /> },
   { path: "/file", element: <File /> },
   { path: "/services", element: <Services /> },
   { path: "/resources", element: <Resources /> },
-  { path: "/sandbox", element: <Sandbox /> }
+  { path: "/sandbox", element: <Sandbox /> },
+  { path: "/landing", element: <LandingForm /> },
 ]);
 createRoot(document.getElementById('root')!).render(
   <StrictMode>

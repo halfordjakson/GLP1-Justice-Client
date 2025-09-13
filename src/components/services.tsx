@@ -4,14 +4,18 @@ import Navigation from "./navigation";
 import Footer from "./footer";
 import ExpandablePanel, { type CardSpec, type PanelSection } from "./expandablePanel";
 import "../styles/services.css";
-import ex from "../assets/expand.png";
-import rd from "../assets/collapse.png";
+import expand from "../assets/expand.png";
+import collapse from "../assets/collapse.png";
 import srvg02 from "../assets/srv-g-02.png";
 import supig13f from "../assets/supig13f.png";
 import supig14f from "../assets/supig14f.png";
 import supig15f from "../assets/supig15f.png";
 import supig16f from "../assets/supig16f.png";
 import supig17f from "../assets/supig17f.png";
+import supig18f from "../assets/supig18f.png";
+import supig19f from "../assets/supig19f.png";
+import supig20f from "../assets/supig20f.png";
+import supig22f from "../assets/supig22f.png";
 import "../styles/expandablePanel.css";
 /** Author rows as (image + copy); panel enforces 1:1 images */
 type CardData = {
@@ -21,15 +25,18 @@ type CardData = {
   sections?: PanelSection[];
 };
 export default function Services() {
-  const CARD_DATA: CardData[] = [
+  const cards: CardData[] = [
     {
-      id: "elig-1",
+      id: "card-eligibility",
       title: "Eligibility",
-      blurb: "You can be eligible for compensation through a variety of means. Here are a few.",
+      blurb: `Eligibility is ultimately 
+      the determining factor for compensation. 
+      Eligibility is the tailored criterion that describes 
+      issues that arise from the use of "GLP-1" drugs.`,
       sections: [
         {
           side: "right",
-          img: { src: supig13f, alt: "Checklist", widthPx: 320 }, // <- square enforced inside panel
+          img: { src: supig13f, alt: "An illustration of an individual's abdomen in which gastric statis has taken place.", widthPx: 320 },
           copy: (
             <>
               <h2 style={{fontWeight: "700"}}>Gastroperesis (Gastric Stasis)</h2>
@@ -63,7 +70,7 @@ export default function Services() {
         },
         {
           side: "left",
-          img: { src: supig14f, alt: "Documents", widthPx: 300 },
+          img: { src: supig14f, alt: "An illustration of an individual's abdomen with the intestinal lineage visibly blocked", widthPx: 300 },
           copy: (
           <>
           <h2 style={{fontWeight: "700"}}>Bowel Obstruction (Illeus)</h2>
@@ -117,7 +124,7 @@ export default function Services() {
         },
         {
           side: "right",
-          img: { src: supig15f, alt: "Submission flow", widthPx: 300 },
+          img: { src: supig15f, alt: "An illustration depicting an individual suffering from NAION; the individual is seemingly blind in one eye", widthPx: 300 },
           copy: (
           <>
           <h2 style={{fontWeight: "700"}}>Non-Arteritic Anterior Ischemic Optic Neuropathy (NAION)</h2>
@@ -161,54 +168,168 @@ export default function Services() {
             </>
           ),
         },
-      ],
-    },
-    {
-      id: "elig-2",
-      title: "Medical History",
-      blurb: "Summarize relevant history to help triage your case.",
-      sections: [
         {
           side: "right",
-          img: { src: supig16f || "", alt: "Medical History", widthPx: 300 },
+          img: { src: supig22f || "", alt: "An illustration of a physician telling a patient inaccurate information", widthPx: 300 },
           copy: (
-            <ul>
-              <li>Prior conditions</li>
-              <li>Current prescriptions</li>
-              <li>Known allergies</li>
-            </ul>
+            <>
+            <h2>Clinical Negligence</h2>
+            <br/>
+            <p> Were you told that you were eligible for a prescription for a "GLP-1" schedule drug? 
+            Did you consume the drug according to the specified regiment and succumb to adverse effects? 
+            Did you later discover that the drug was not authorized for your taking from the outset? 
+            Were you given the wrong instructions regarding dosages, frequency, or area of application? 
+            All of these questions are related to medical negligence and can be the basis for compensation.</p>
+            <div style={{
+            backgroundColor: "#FFD1B2",
+            outline: "none",
+            borderLeft: "2px solid #FF4D00",
+            borderTopLeftRadius: "2px",
+            padding: "1rem"
+            }}>
+              <h3><span className="prefix-em">D</span>id you know?</h3>
+              <br/>
+              <p>Two physicians from the state of 
+              Texas were accused of issuing thousands of 
+              prescriptions to patients without due process. 
+              The drugs prescribed were described as being the<em> trinity </em>  
+              (a crude, mocking dig on GOD, the Holy Spirit, and Jesus Christ) in 
+              that they were all used in 
+              succession of one another. This strengthens the fact 
+              that clincal malpractice and unauthorized prescriptions 
+              are a legitimate issue in today's society.</p>
+            </div>
+            <br/>
+            <p>Clinical negligence has been an issue for a considerable amount of time. 
+            There have been numerous instances in which negligence resulted in the injury of a patient.</p>
+            <h3>Violations of Practice</h3>
+            <h6> This is a reduced list of symptoms that one may exhibit upon being subject to clinical malpractice.</h6>
+            <br/>
+            <p><em>Contraindications (Medical History)</em>: There are instances in which physicians 
+            fail to recognize outstanding conditions that any select 
+            individual suffers from; clinical personnel responsible for ordaining 
+            the delivery of "GLP-1" drugs may fail to identify the health profile of a patient.</p>
+            <p><em>Inadequate Education</em>: A patient may fail 
+            to be provided with information in which 
+            the nature of the drug is described; a lack of information and what to expect from the 
+            assigned regiment can result in suffering for that of the individual affected.</p>
+            <br/>
+            <p><em>Reporting Failure</em>: The failure to follow suit with 
+            consultation in wake of<em> abnormal lab findings </em>and 
+            other clinical assessments could also qualify as grounds of clincal negligence. 
+            The results derived from lab testing describe the 
+            health index of the patient and it should be reported accordingly. 
+            If you feel as if you were not provided with correct information in due time, this could be a 
+            reason for which your condition has reached the stage it's in. </p>
+            <br/>
+            <h3>Resources & Counsel</h3>
+            <h4> You can learn more about <span className="ail-b">Clinical Negligence</span> through these external links.</h4>
+              <ul>
+                <li><a href="https://www.robertkinglawfirm.com/wp-content/uploads/2024/09/glp-1-ra-lawsuit-ozempic-trulicity-injury-claims.pdf">Robert King Law Firm | GLP1 RA Lawsuit – Ozempic and Trulicity Injury Claims</a></li>
+                <li><a href="https://www.seegerweiss.com/product-liability/ozempic-glp-1-lawsuit/">Seeger Weiss LLP | Ozempic GLP-1 Lawsuit</a></li>
+                <li><a href="https://www.classaction.org/media/glp-1-ras-products-liability-litigation.pdf">ClassAction.org | Product Liability Litigation</a></li>
+              </ul>
+            </>
           ),
         },
       ],
     },
-    { id: "elig-3", 
-      title: "Timeline", 
-      blurb: "Capture dates for medication start/stop and first symptoms." 
-    },
-    { id: "elig-4", 
+    { id: "card-documentation", 
       title: "Documentation", 
-      blurb: "What to gather before submitting your claim.", 
+      blurb: `A host of documents are demanded before your compensation claim is considered. 
+      You need to gather documents that pertain to your current health standing amongst others 
+      that showcase your history with prescriptions and general indices of health.`, 
       sections: [
         {
           side: "right",
           img: { src: supig17f || "", alt: "Documents", widthPx: 300 },
           copy: (
             <>
-            <h4>Documentation</h4>
+            <h2>Core Documentation</h2>
+            <p>The core documentation needed for that of successful submission for 
+            compensation typically include documents that describe the current 
+            health standing for that of the patient alongside interactions between 
+            that of clinical institutions and the like.</p>
+            <br/>
+            <p><em>General Medical Artifacts</em>: A host of documents need to be obtained prior to succesfully filing for compensation.
+            There are a host of documents that are purposed for profiling your health and other metrics that describe your person. </p>
+            <ul>
+            <li>
+              <p><em>Electronic Health Record</em>: This is a standardized document that captures common 
+              information and characteristics. An<em> EHR </em>will typically 
+              include the following:
+              </p>
+              <h6> This is a reduced list of fields that one may encounter inside of an <span className="ail-b">Electronic Health Record</span>.</h6>
+              <ul>
+                <li>
+                  <em>First Name</em>
+                </li>
+                <li>
+                  <em>Last Name</em>
+                </li>
+                <li>
+                  <em>Contact Information (Address, Phone Number, Email,  &amp; Emergency Contacts)</em>
+                </li>
+                <li>
+                  <em>Insurance Details</em>
+                </li>
+                <li>
+                  <em>Medical Record Number</em>
+                </li>
+                <li>
+                  <em>Medical Provider Identifiers (e.g. Medicaid & Medicare)</em>
+                </li>
+                <li>
+                  <em>Medical History</em>
+                </li>
+                <li>
+                  <em>Allergens</em>
+                </li>
+                <li>
+                  <em>Medications</em>
+                </li>
+                 <li>
+                  <em>Immunizations</em>
+                </li>
+                 <li>
+                  <em>Vital Signs</em>
+                </li>
+              </ul>
+            </li>
+            <br/>
+            <li>
+            <p><em>Progression Notes</em>: 
+            Progression 
+            Notes are an active record of your 
+            current state of being. This is an rolling artifact in that it 
+            persists as you continue to visit your primary point of care. 
+            The key difference between that of 
+            <span className="ail-b"> Progression Notes </span> and an<span className="ail-b"> EHR </span>is the element of time. 
+            <span className="ail-b"> Progression Notes </span> are typically contemporaneous whilst an 
+            <span className="ail-b"> EHR </span> is historical.</p>
+            </li>
+            <br/>
+            <li>
+            <p><em>Diagnostics</em>: Your diagnostic tests 
+            are also a prerequisite for that of compensation 
+            claim submissions. Am authority responsible for 
+            reviewing your claim and determining the best plan of action 
+            for such would assesss your physiology and other measures of your body.</p>
+            </li>
+            <br/>
+            <li>
             
-            
+            </li>
+            </ul> 
+            <br/>
             </>
             )
         }
       ]
     },
-    { id: "elig-5", title: "Contact", blurb: "Preferred way to reach you." },
-    { id: "elig-6", title: "Consent", blurb: "Authorization to review records." },
-    { id: "elig-7", title: "Next Steps", blurb: "What happens after submit." },
-    { id: "elig-8", title: "FAQ", blurb: "Common questions and answers." },
   ];
 
-  const items: CardSpec[] = CARD_DATA.map((d) => ({
+  const items: CardSpec[] = cards.map((d) => ({
     id: d.id,
     title: d.title,
     intro: d.blurb ? <p style={{ margin: 0 }}>{d.blurb}</p> : undefined,
@@ -242,8 +363,8 @@ export default function Services() {
                 items={items}
                 columns={4}
                 singleOpen
-                indicatorCollapsedSrc={ex}
-                indicatorExpandedSrc={rd}
+                indicatorCollapsedSrc={expand}
+                indicatorExpandedSrc={collapse}
                 indicatorSize={22}
               />
             </div>

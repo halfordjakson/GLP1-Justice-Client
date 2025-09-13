@@ -65,3 +65,8 @@
     font-weight: 1000;
     color: #FF8000;
 }
+.prefix-em {
+    font-size: 150%;
+    color: #FF4D00;
+    letter-spacing: 0.0125rem;
+}

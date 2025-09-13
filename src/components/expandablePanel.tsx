@@ -1,51 +1,44 @@
 // expandablePanel.tsx
-import React, { useMemo, useState } from "react";
+import React, { useMemo, useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 
 /** A single row inside an expanded panel: image + copy, with side control */
 export type PanelSection = {
-  copy: React.ReactNode;                        // the text/content for this row
+  copy: React.ReactNode;
   img?: {
     src: string;
     alt?: string;
-    widthPx?: number;                           // desired image column width (default 240)
-    /** aspect is enforced to 1:1 globally */
-    radiusPx?: number;                          // border radius of the square (default 12)
-    style?: React.CSSProperties;                // extra <img> styles
+    widthPx?: number; // desired image column width (default 240)
+    radiusPx?: number;
+    style?: React.CSSProperties;
   };
-  side?: "left" | "right";                      // which side shows the image (default 'left')
+  side?: "left" | "right";
 };
 
 export interface CardSpec {
   id: string;
   title: string;
   icon?: React.ReactNode;
-  /** Legacy/simple content: still supported when `sections` not provided */
   content?: React.ReactNode;
-  /** Optional block shown at top of the panel, before any sections */
   intro?: React.ReactNode;
-  /** Explicit paired layout rows (image + copy) */
   sections?: PanelSection[];
-  /** Optional class hook to style the content container */
   contentClassName?: string;
-  /** Optional per-card override icons */
   indicatorCollapsedSrc?: string;
   indicatorExpandedSrc?: string;
 }
+
 export interface ExpandableCardsProps {
   items: CardSpec[];
   columns?: 3 | 4;
   singleOpen?: boolean;
   minColPx?: number;
-  /** Global default icons and size */
   indicatorCollapsedSrc?: string;
   indicatorExpandedSrc?: string;
   indicatorSize?: number;
-  /** How an open card should occupy the grid */
-  openMode?: "fullrow" | "span2";               // default: "fullrow"
-  /** Optional fixed height for closed cards (px) to keep grid tidy */
-  closedMinBlockSize?: number;                  // e.g., 160
+  openMode?: "fullrow" | "span2";
+  closedMinBlockSize?: number;
 }
+
 /* helper: square, clipped image wrapper enforcing 1:1 */
 const SquareImage: React.FC<{
   src: string;
@@ -57,7 +50,7 @@ const SquareImage: React.FC<{
     style={{
       position: "relative",
       width: "100%",
-      aspectRatio: "1 / 1",      // ← enforce square
+      aspectRatio: "1 / 1",
       borderRadius: radius,
       overflow: "hidden",
     }}
@@ -72,7 +65,7 @@ const SquareImage: React.FC<{
         inset: 0,
         width: "100%",
         height: "100%",
-        objectFit: "cover",       // fill & crop to the square
+        objectFit: "cover",
         display: "block",
         ...imgStyle,
       }}
@@ -93,25 +86,52 @@ export default function ExpandableCards({
 }: ExpandableCardsProps) {
   const [openIds, setOpenIds] = useState<Set<string>>(new Set());
   const [exitingIds, setExitingIds] = useState<Set<string>>(new Set());
+  const [pageByCard, setPageByCard] = useState<Record<string, number>>({});
+
+  const cardRefs = useRef<Record<string, HTMLDivElement | null>>({});
+
   const isOpen = (id: string) => openIds.has(id);
   const isExiting = (id: string) => exitingIds.has(id);
+
+  // Scroll helper
+  const scrollToCard = (id: string) => {
+    const el = cardRefs.current[id];
+    if (el) {
+      const top = el.getBoundingClientRect().top + window.scrollY - 20; // optional offset
+      window.scrollTo({ top, behavior: "smooth" });
+    }
+  };
+
+  // Scroll whenever a card's page changes
+  useEffect(() => {
+    Object.keys(pageByCard).forEach((id) => {
+      if (isOpen(id)) {
+        scrollToCard(id);
+      }
+    });
+  }, [pageByCard]);
 
   const toggle = (id: string) => {
     setOpenIds(prev => {
       const next = new Set(prev);
       const wasOpen = next.has(id);
       if (singleOpen) next.clear();
-      if (wasOpen) { setExitingIds(s => new Set(s).add(id)); next.delete(id); }
-      else next.add(id);
+      if (wasOpen) {
+        setExitingIds(s => new Set(s).add(id));
+        next.delete(id);
+      } else {
+        next.add(id);
+        setPageByCard(p => ({ ...p, [id]: 0 })); // reset page on open
+      }
       return next;
     });
   };
 
   const panelMotion = useMemo(
     () => ({
-      initial:  { opacity: 0, height: 0 },
-      animate:  { opacity: 1, height: "auto" as const },
-      exit:     { opacity: 0, height: 0 },
+      initial: { opacity: 0, height: 0 },
+      animate: { opacity: 1, height: "auto" as const },
+      exit: { opacity: 0, height: 0 },
       transition: { duration: 0.25, ease: "easeInOut" as const },
     }),
     []
@@ -125,21 +145,29 @@ export default function ExpandableCards({
         gap: 28,
         gridAutoFlow: "dense",
         gridTemplateColumns: `repeat(${columns}, minmax(${minColPx}px, 1fr))`,
-        alignItems: "start",                  // ← don't stretch other cards
+        alignItems: "start",
       }}
       layout
       transition={{ type: "spring", stiffness: 300, damping: 28 }}
     >
       {items.map(item => {
         const open = isOpen(item.id);
-        const keepWide = open || isExiting(item.id); // keep span until exit finishes
+        const keepWide = open || isExiting(item.id);
         const collapsedSrc = item.indicatorCollapsedSrc ?? indicatorCollapsedSrc;
-        const expandedSrc  = item.indicatorExpandedSrc  ?? indicatorExpandedSrc;
+        const expandedSrc = item.indicatorExpandedSrc ?? indicatorExpandedSrc;
         const showExpanded = keepWide;
+
+        const sections = item.sections ?? [];
+        const sectionsPerPage = 3;
+        const totalPages = Math.ceil(sections.length / sectionsPerPage);
+        const currentPage = pageByCard[item.id] ?? 0;
+        const startIdx = currentPage * sectionsPerPage;
+        const currentSections = sections.slice(startIdx, startIdx + sectionsPerPage);
 
         return (
           <article
             key={item.id}
+            ref={el => { cardRefs.current[item.id] = el as HTMLDivElement | null; }}
             className={`xc-card ${keepWide ? "is-open" : ""}`}
             data-state={open ? "open" : "closed"}
             style={{
@@ -147,17 +175,14 @@ export default function ExpandableCards({
               border: "2px solid #ff4d00",
               borderRadius: 14,
               overflow: "hidden",
-              // Put the open card on its own row or span two columns
               gridColumn: keepWide
                 ? openMode === "fullrow"
                   ? "1 / -1"
                   : "span 2"
                 : "auto",
-              // keep closed cards compact if desired
               minBlockSize: !keepWide && closedMinBlockSize ? closedMinBlockSize : undefined,
             }}
           >
-            {/* Animate only inner wrapper to avoid border-radius distortion */}
             <motion.div
               className="xc-card-inner"
               layout
@@ -185,7 +210,6 @@ export default function ExpandableCards({
                 }}
               >
                 {item.icon && <span className="xc-ic">{item.icon}</span>}
-
                 <span
                   className="xc-title"
                   style={{
@@ -198,16 +222,21 @@ export default function ExpandableCards({
                 >
                   {item.title}
                 </span>
-
-                {/* Trailing indicator image (cross-fade) */}
+                {/* Trailing indicator */}
                 <span
                   className="xc-indicator"
                   aria-hidden="true"
-                  style={{ position: "relative", width: indicatorSize, height: indicatorSize, display: "inline-block" }}
+                  style={{
+                    position: "relative",
+                    width: indicatorSize,
+                    height: indicatorSize,
+                    display: "inline-block",
+                  }}
                 >
                   <span
                     style={{
-                      position: "absolute", inset: 0,
+                      position: "absolute",
+                      inset: 0,
                       backgroundImage: collapsedSrc ? `url(${collapsedSrc})` : "none",
                       backgroundRepeat: "no-repeat",
                       backgroundPosition: "center",
@@ -218,7 +247,8 @@ export default function ExpandableCards({
                   />
                   <span
                     style={{
-                      position: "absolute", inset: 0,
+                      position: "absolute",
+                      inset: 0,
                       backgroundImage: expandedSrc ? `url(${expandedSrc})` : "none",
                       backgroundRepeat: "no-repeat",
                       backgroundPosition: "center",
@@ -231,7 +261,10 @@ export default function ExpandableCards({
               </button>
 
               {/* Panel body */}
-              <AnimatePresence initial={false} onExitComplete={() => setExitingIds(new Set())}>
+              <AnimatePresence
+                initial={false}
+                onExitComplete={() => setExitingIds(new Set())}
+              >
                 {open && (
                   <motion.section
                     id={`panel-${item.id}`}
@@ -239,13 +272,15 @@ export default function ExpandableCards({
                     key="panel"
                     role="region"
                     aria-label={`${item.title} details`}
-                    data-state="open"
                     layout
                     initial={panelMotion.initial}
                     animate={panelMotion.animate}
                     exit={panelMotion.exit}
                     transition={panelMotion.transition}
-                    style={{ overflow: "hidden", borderTop: "1px solid rgba(0,0,0,.06)" }}
+                    style={{
+                      overflow: "hidden",
+                      borderTop: "1px solid rgba(0,0,0,.06)",
+                    }}
                   >
                     <div
                       className={`xc-panel-inner ${item.contentClassName ?? ""}`}
@@ -257,33 +292,61 @@ export default function ExpandableCards({
                         color: "#2a2a2a",
                       }}
                     >
-                      {/* sections (image+copy rows) OR fallback to content */}
-                      {item.sections?.length ? (
+                      {sections.length ? (
                         <div className="xc-sections" style={{ display: "grid", gap: 16 }}>
+                          {totalPages > 1 && (
+                            <div
+                              style={{
+                                marginTop: 12,
+                                display: "flex",
+                                justifyContent: "space-between",
+                                alignItems: "center",
+                              }}
+                            >
+                              <button
+                                className="btn-pagi"
+                                onClick={() =>
+                                  setPageByCard(p => ({
+                                    ...p,
+                                    [item.id]: currentPage === 0 ? totalPages - 1 : currentPage - 1,
+                                  }))
+                                }
+                              >
+                                <h3>Previous</h3>
+                              </button>
+                              <span>
+                                Page {currentPage + 1} of {totalPages}
+                              </span>
+                              <button
+                                className="btn-pagi"
+                                onClick={() =>
+                                  setPageByCard(p => ({
+                                    ...p,
+                                    [item.id]: currentPage === totalPages - 1 ? 0 : currentPage + 1,
+                                  }))
+                                }
+                              >
+                                <h3>Next</h3>
+                              </button>
+                            </div>
+                          )}
                           {item.intro && (
                             <div className="xc-intro" style={{ marginBottom: 4 }}>
                               {item.intro}
                             </div>
                           )}
 
-                          {item.sections.map((s, i) => {
+                          {currentSections.map((s, i) => {
                             const col = s.img?.widthPx ?? 240;
-                            const grid =
-                              s.side === "right"
-                                ? `1fr minmax(140px, ${col}px)`
-                                : `minmax(140px, ${col}px) 1fr`;
+                            const grid = s.side === "right"
+                              ? `1fr minmax(140px, ${col}px)`
+                              : `minmax(140px, ${col}px) 1fr`;
                             return (
                               <div
                                 key={i}
                                 className={`xc-row ${s.side === "right" ? "right" : "left"}`}
-                                style={{
-                                  display: "grid",
-                                  gridTemplateColumns: grid,
-                                  gap: 16,
-                                  alignItems: "start",
-                                }}
+                                style={{ display: "grid", gridTemplateColumns: grid, gap: 16, alignItems: "start" }}
                               >
-                                {/* left image (square) */}
                                 {s.side !== "right" && s.img && (
                                   <figure style={{ margin: 0 }}>
                                     <SquareImage
@@ -295,10 +358,8 @@ export default function ExpandableCards({
                                   </figure>
                                 )}
 
-                                {/* copy */}
                                 <div className="xc-copy">{s.copy}</div>
 
-                                {/* right image (square) */}
                                 {s.side === "right" && s.img && (
                                   <figure style={{ margin: 0 }}>
                                     <SquareImage
@@ -312,6 +373,44 @@ export default function ExpandableCards({
                               </div>
                             );
                           })}
+
+                          {/* Pagination controls */}
+                          {totalPages > 1 && (
+                            <div
+                              style={{
+                                marginTop: 12,
+                                display: "flex",
+                                justifyContent: "space-between",
+                                alignItems: "center",
+                              }}
+                            >
+                              <button
+                                className="btn-pagi"
+                                onClick={() =>
+                                  setPageByCard(p => ({
+                                    ...p,
+                                    [item.id]: currentPage === 0 ? totalPages - 1 : currentPage - 1,
+                                  }))
+                                }
+                              >
+                                <h3>Previous</h3>
+                              </button>
+                              <span>
+                                Page {currentPage + 1} of {totalPages}
+                              </span>
+                              <button
+                                className="btn-pagi"
+                                onClick={() =>
+                                  setPageByCard(p => ({
+                                    ...p,
+                                    [item.id]: currentPage === totalPages - 1 ? 0 : currentPage + 1,
+                                  }))
+                                }
+                              >
+                                <h3>Next</h3>
+                              </button>
+                            </div>
+                          )}
                         </div>
                       ) : (
                         item.content ?? null
