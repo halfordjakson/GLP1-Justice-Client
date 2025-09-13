@@ -16,7 +16,7 @@ export default function File() {
                     <div className="fl-c">
                         <div className="fl-f">
                                                         <p style={{textAlign: 'center', marginBottom: '2rem', color: '#444'}}>
-                                                            Justice starts with the truth. Get the latest on Ozempic, Wegovy, and Mounjaro—stories and updates the drug companies don’t want you to see. Sign up and join the fight for real accountability.
+                                                            Justice starts with the truth. Get the latest news about Ozempic, Wegovy, and Mounjaro, the stories big pharma doesn't want you to see..
                                                         </p>
                             <Form />
                         </div>
