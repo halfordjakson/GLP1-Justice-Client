@@ -29,8 +29,8 @@ const Home: React.FC = () => {
     return (
         <>
             <Navigation />
+            <div className="highlight-bar">GLP-1 Lawsuit Information Center</div>
             <main style={{ maxWidth: 700, margin: '0 auto', padding: '2rem 1rem' }}>
-                <div className="highlight-bar">GLP-1 Lawsuit Information Center</div>
                 {/* Call to Action Section */}
                 <section style={{ textAlign: 'center', marginBottom: '2.5rem', padding: '2rem 1rem', background: '#f7fafc', borderRadius: 12, boxShadow: '0 2px 8px rgba(0,0,0,0.04)' }}>
                     <h1 style={{ fontSize: '2.5rem', marginBottom: '1rem' }}>Check Your Eligibility for GLP-1 Injury Compensation</h1>
