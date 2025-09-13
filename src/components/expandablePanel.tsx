@@ -29,7 +29,6 @@ export interface CardSpec {
 
 export interface ExpandableCardsProps {
   items: CardSpec[];
-  columns?: 3 | 4;
   singleOpen?: boolean;
   minColPx?: number;
   indicatorCollapsedSrc?: string;
@@ -75,7 +74,6 @@ const SquareImage: React.FC<{
 
 export default function ExpandableCards({
   items,
-  columns = 4,
   singleOpen = false,
   minColPx = 180,
   indicatorCollapsedSrc,
