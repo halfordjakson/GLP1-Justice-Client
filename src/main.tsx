@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import App from "./App";
 import LandingForm from "./components/landingForm";
-import Profile from "./components/profile";
+// import Profile from "./components/profile";
 import File from "./components/file";
 import About from "./components/about";
 import Services from "./components/services";
@@ -15,7 +15,7 @@ pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/$
 const router = createBrowserRouter([
   { path: "/", element: <App /> },
   { path: "/about", element: <About /> },
-  { path: "/profile", element: <Profile /> },
+  // { path: "/profile", element: <Profile /> },
   { path: "/file", element: <File /> },
   { path: "/services", element: <Services /> },
   { path: "/resources", element: <Resources /> },

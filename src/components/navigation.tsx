@@ -27,7 +27,7 @@ return (
           {[
             ['/file',  'File'],
             ['/about',  'About'],
-            ['/profile', 'Profile'],
+            // ['/profile', 'Profile'],
             ['/services', 'Services'],
             ['/resources', 'Resources'],
             ['/sandbox', 'Sandbox']
