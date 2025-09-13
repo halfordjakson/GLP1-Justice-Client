@@ -1,7 +1,6 @@
 // services.tsx
 // ...existing code...
 import Navigation from "./navigation";
-import "../styles/about.css";
 import Footer from "./footer";
 import ExpandablePanel, { type CardSpec, type PanelSection } from "./expandablePanel";
 import "../styles/services.css";
@@ -20,6 +19,7 @@ type CardData = {
   blurb?: string;
   sections?: PanelSection[];
 };
+export default function Services() {
   const cards: CardData[] = [
     {
       id: "card-eligibility",
@@ -335,7 +335,6 @@ type CardData = {
   return (
     <>
       <Navigation />
-      <div className="highlight-bar">GLP-1 Drug Side Effects & Services</div>
       <div className="srv-r">
         <div className="srv-t">
           <h2>
