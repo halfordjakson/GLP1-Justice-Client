@@ -13,8 +13,8 @@ import './index.css';
 import { pdfjs } from 'react-pdf';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
 const router = createBrowserRouter([
-  { path: "/", element: <LandingForm /> },
-  { path: "/home", element: <App /> },
+  { path: "/", element: <App /> },
+  { path: "/form", element: <LandingForm /> },
   { path: "/about", element: <About /> },
   { path: "/profile", element: <Profile /> },
   { path: "/file", element: <File /> },
