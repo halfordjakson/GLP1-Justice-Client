@@ -8,7 +8,7 @@ import File from "./components/file";
 import About from "./components/about";
 import Services from "./components/services";
 import Resources from "./components/resources";
-import Sandbox from "./components/sandbox";
+import AboutUs from "./components/aboutus";
 import './index.css';
 import { pdfjs } from 'react-pdf';
 pdfjs.GlobalWorkerOptions.workerSrc = `//cdnjs.cloudflare.com/ajax/libs/pdf.js/${pdfjs.version}/pdf.worker.min.js`;
@@ -19,7 +19,7 @@ const router = createBrowserRouter([
   { path: "/file", element: <File /> },
   { path: "/services", element: <Services /> },
   { path: "/resources", element: <Resources /> },
-  { path: "/sandbox", element: <Sandbox /> },
+  { path: "/aboutus", element: <AboutUs /> },
   { path: "/landing", element: <LandingForm /> },
 ]);
 createRoot(document.getElementById('root')!).render(

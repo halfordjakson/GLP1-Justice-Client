@@ -28,9 +28,9 @@ return (
             ['/file',  'Newsletter'],
             ['/about',  "FAQ's"],
             // ['/profile', 'Profile'],
-            ['/services', 'Eligibility & Next Steps'],
+            ['/services', 'Next Steps'],
             ['/resources', 'Resources'],
-            ['/sandbox', 'Sandbox']
+            ['/aboutus', 'About Us']
           ].map(([href, label]) => (
             <li
               className={
