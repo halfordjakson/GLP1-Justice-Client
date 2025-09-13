@@ -15,8 +15,9 @@ export default function File() {
                 <div className="fl-cc">
                     <div className="fl-c">
                         <div className="fl-f">
-                            <h2 style={{textAlign: 'center', marginBottom: '1.5rem'}}>Newsletter Signup</h2>
-                            <p style={{textAlign: 'center', marginBottom: '2rem', color: '#444'}}>Stay up to date with the latest news, updates, and resources about GLP-1 drugs and legal rights. Enter your info below to join our newsletter.</p>
+                                                        <p style={{textAlign: 'center', marginBottom: '2rem', color: '#444'}}>
+                                                            Justice starts with the truth. Get the latest on Ozempic, Wegovy, and Mounjaro—stories and updates the drug companies don’t want you to see. Sign up and join the fight for real accountability.
+                                                        </p>
                             <Form />
                         </div>
                     </div>
