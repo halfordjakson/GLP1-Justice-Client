@@ -5,7 +5,6 @@ import ExpandablePanel, { type CardSpec, type PanelSection } from "./expandableP
 import "../styles/services.css";
 import expand from "../assets/expand.png";
 import collapse from "../assets/collapse.png";
-import srvg02 from "../assets/srv-g-02.png";
 import supig13f from "../assets/supig13f.png";
 import supig14f from "../assets/supig14f.png";
 import supig15f from "../assets/supig15f.png";
@@ -364,32 +363,28 @@ export default function Services() {
     <>
       <Navigation />
       <div className="srv-r">
-        <div className="srv-t">
-          <h2>
-            <span className="cap-a">S</span>ervices
+        <div className="srv-t" style={{
+          background: 'linear-gradient(90deg, #FF8000 0%, #FFB300 100%)',
+          color: 'white',
+          padding: '2rem 0',
+          textAlign: 'center',
+          borderRadius: '0 0 18px 18px',
+          marginBottom: '2rem',
+          boxShadow: '0 2px 8px rgba(0,0,0,0.04)'
+        }}>
+          <h2 style={{margin: 0, fontSize: '2.5rem', fontWeight: 700}}>
+            Resources
           </h2>
         </div>
-        <div className="srv-cr">
-          <div className="srv-i">
-            <div className="srv-g">
-              <img width="150" height="150" src={srvg02} alt="services" />
-              <div className="srv-gi">
-                <h3>About our services</h3>
-                <p>You can find a variety of services that pertain to GLP-1 drugs here. 
-                  It's important to address any concerns regarding eligibility and best practices that accompany using GLP-1 drugs.</p>
-              </div>
-            </div>
-          </div>
-          <div className="srv-cc">
-            <div className="srv-c">
-              <ExpandablePanel
-                items={items}
-                singleOpen
-                indicatorCollapsedSrc={expand}
-                indicatorExpandedSrc={collapse}
-                indicatorSize={22}
-              />
-            </div>
+        <div className="srv-cc" style={{ justifyContent: 'center' }}>
+          <div className="srv-c">
+            <ExpandablePanel
+              items={items}
+              singleOpen
+              indicatorCollapsedSrc={expand}
+              indicatorExpandedSrc={collapse}
+              indicatorSize={22}
+            />
           </div>
         </div>
       </div>
