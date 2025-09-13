@@ -3,10 +3,12 @@ import Form from "./formViewer.tsx";
 import Navigation from "./navigation.tsx";
 import Footer from "./footer.tsx";
 import "../styles/file.css";
+import "../styles/about.css";
 export default function File() {
     return (
         <React.Fragment>
             <Navigation />
+            <div className="highlight-bar">File a Claim</div>
             <div className="fl-r">
                 <div className="fl-dec"></div>
                 <div className="fl-t">
@@ -19,8 +21,6 @@ export default function File() {
                         </div>
                     </div>
                 </div>
-
-
             </div>
             <Footer />
         </React.Fragment>
