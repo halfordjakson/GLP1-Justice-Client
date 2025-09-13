@@ -16,17 +16,8 @@ export function FormViewer() {
     trigger,
     formState: { errors }
   } = useForm<FieldValues>({ mode: 'onBlur' });
-  // ---- Optional: append additional user-descriptor fields here
-  const appendedFields: FieldDef[] = [
-    { name: 'middleName',   label: 'Middle Name',     type: 'text' },
-    { name: 'dateOfBirth',  label: 'Date of Birth',   type: 'date' },
-    { name: 'city',         label: 'City',            type: 'text' },
-    { name: 'state',        label: 'State/Province',  type: 'text' },
-    { name: 'country',      label: 'Country',         type: 'text' },
-    { name: 'occupation',   label: 'Occupation',      type: 'text' },
-  ];
-  // Combine your existing schema with the extra fields
-  const fields: FieldDef[] = useMemo(() => [...formFields, ...appendedFields], []);
+  // Only use the basic fields for newsletter signup
+  const fields: FieldDef[] = useMemo(() => formFields.slice(0, 3), []); // firstName, lastName, email
   const [activeIdx, setActiveIdx] = useState(0);
   // Go forward only if the current field validates
   const tryNext = async () => {
