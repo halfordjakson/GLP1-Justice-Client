@@ -7,17 +7,16 @@ export default function About() {
     return (
         <React.Fragment>
             <Navigation />
+            <div className="highlight-bar">FAQ (Frequently Asked Questions)</div>
             <div className="ab-r">
                 <div className="ab-dec"></div>
-                    <div className="highlight-bar">FAQ (Frequently Asked Questions)</div>
-                    <div className="ab-cc">
-                        <div className="ab-c">
-                            <div className="ab-fv">
+                <div className="ab-cc">
+                    <div className="ab-c">
+                        <div className="ab-fv">
                             <Accordion />
-                            </div>
                         </div>
                     </div>
-                
+                </div>
             </div>
             <Footer />
         </React.Fragment>
