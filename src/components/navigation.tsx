@@ -25,6 +25,7 @@ return (
       <div className="dcr-18nbak">
         <ul className="dcr-1d6g26q">
           {[
+            ['/', 'Home'],
             ['/file',  'Newsletter'],
             ['/resources', 'Resources'],
           ].map(([href, label]) => (
