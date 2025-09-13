@@ -33,31 +33,12 @@ export default function Services() {
           img: { src: supig13f, alt: "An illustration of an individual's abdomen in which gastric statis has taken place.", widthPx: 320 },
           copy: (
             <>
-              <h2 style={{fontWeight: "700"}}>Gastroperesis (Gastric Stasis)</h2>
-              <p>A condition that affects 
-              the stomach muscles and prevents 
-              proper stomach emptying.</p>
-              <h3> Signs & Symptoms</h3>
-              <h6> This is a reduced list of symptoms that one may exhibit upon being subject to the condition that is <span className="ail-b">Gastroparesis (Gastric Stasis)</span></h6>
-              <br/>
-              <p><em>Nausea</em>: Do you feel nauseated? This is a hallmark sign of <span className="ail-b">Gastroparesis</span>. Nausea typically occurs shortly after eating a meal </p>
-              <br/>
-              <p><em>Vomiting</em>: Do you vomit undigested food hours after eating? This is another hallmark sign of <span className="ail-b">Gastroparesis</span>. Vomiting typically occurs 2-3 hours after eating a meal </p>
-              <br/>
-              <p><em>Early Satiety</em>: Do you feel full after eating only a small amount of food? This is another common symptom of <span className="ail-b">Gastroparesis</span>. Early satiety typically occurs during or shortly after eating a meal </p>
-              <br/>
-              <h3> Progression & Onset</h3>
-              <br/>
-              <p> Progression for <span className="ail-b">Gastroparesis</span> is usually gradual in that it takes place over a course of multiple stages. </p>
-              <p><em>Early Stages</em>: Early stages of Gastroparesis are usually defined </p>
-              <br/>
-              <p><em>Intermediate Stages</em>: Intermediate stages of <span className="ail-b">Gastroparesis</span> are characterized by prolonged periods of inadequate gastric motility, frequent nausea and vomiting, and noticeable weight loss.</p>
-              <h3>Resources & Counsel</h3>
-              <h4> You can learn more about <span className="ail-b">Gastroparesis</span> through these external links.</h4>
+              <h1 style={{fontSize: "2rem", fontWeight: 700, marginBottom: 8}}>Gastroperesis (Gastric Stasis)</h1>
+              <p>Delayed stomach emptying, causing nausea, vomiting, and feeling full quickly after eating.</p>
               <ul>
-                <li><a href="https://www.niddk.nih.gov/health-information/digestive-diseases/gastroparesis">National Institute of Diabetes and Digestive and Kidney Diseases (NIDDK) | Gastroparesis</a></li>
-                <li><a href="https://iffgd.org/gi-disorders/upper-gi-disorders/gastroparesis/">International Foundation for Gastrointestinal Disorders (IFFGD) | Gastroparesis</a></li>
-                <li><a href="https://gi.org/topics/gastroparesis/">American College of Gastroenterology (ACG) | Gastroparesis</a></li>
+                <li>Nausea after meals</li>
+                <li>Vomiting undigested food</li>
+                <li>Feeling full quickly</li>
               </ul>
             </>
           ),
@@ -67,52 +48,13 @@ export default function Services() {
           img: { src: supig14f, alt: "An illustration of an individual's abdomen with the intestinal lineage visibly blocked", widthPx: 300 },
           copy: (
           <>
-          <h2 style={{fontWeight: "700"}}>Bowel Obstruction (Illeus)</h2>
-              <p><em>Bowel Obstruction (Illeus) </em>is a condition 
-              that affects normal processess that govern the passing of waste throughout your body. 
-              The muscular activity of your intestine is impaired and prone to disruption.</p>
-              <h3> Signs & Symptoms</h3>
-              <h6> This is a reduced list of symptoms that one may exhibit upon being subject to the condition that is <span className="ail-b">Bowel Obstruction (Illeus)</span></h6>
-              <br/>
-              <p><em>Abdominal Pain</em>: Have you noticed any sustained adbominal pain after consuming "GLP-1" drugs?
-              This is a common symptom in individuals who are afflicted with classical <span className="ail-b">Bowel Obstruction (Illeus)</span>.
-              Abdominal pain is commonplace during the first weeks of "GLP-1" drug use but sustained periods of pain are a <span className="b-r">red</span> flag. 
-              </p>
-              <br/>
-              <p><em>Constipation</em>: Have you experienced troubles with successfully discharging waste? 
-              Do you feel as if you have to exert additional effort in order to pass stool? 
-              These are hallmark signs of <span className="ail-b">Bowel Obstruction (Illeus) </span>
-              and will likely be considered in an effort to prove your eligibility. 
-              </p>
-              <br/>
-              <p><em>Abnormal Bowel Sounds</em>: Have you noticed any abnormal sounds when attempting to 
-              relieve yourself?  <span className="ail-b">Bowel Obstruction (Illeus) </span> 
-              could be the culprit as this condition is known to produce crude, distinct sounds.
-              </p>
-              <br/>
-              <h3> Progression & Onset</h3>
-              <h4> Progression for <span className="ail-b">Bowel Obstruction (Illeus)</span> is usually gradual in that it takes place over a course of multiple stages. </h4>
-              <br/>
-              <p><em>Early Stages</em>: Early stages of <span className="ail-b">Bowel Obstruction (Illeus) </span> 
-              are usually defined by a variety of indicators. Abnormal bowel sounds are usually introduced in this 
-              stage in the form of high-pitched, "tinkling" almost <em>metallic</em> sounds. </p>
-              <br/>
-              <p><em>Intermediate Stages</em>: Intermediate stages of <span className="ail-b">Bowel Obstruction (Illeus)</span> 
-              are characterized by the reduction of audibility from the intestine due to increased build-up. 
-              Accompanying symptoms are that</p>
-              <br/>
-              <p><em>Late Stages</em>: In the former stages, abnormal bowel sounds 
-              were discernible but as the intestines continuously fail to mobilize stool, 
-              the sounds become more faint &ndash; 
-              audible indicators are failing to reveal themselves.
-              </p>
-              <h3>Resources & Counsel</h3>
-              <h4> You can learn more about <span className="ail-b">Bowel Obstructon (Illeus)</span> through these external links.</h4>
-              <ul>
-                <li><a href="https://www.mayoclinic.org/diseases-conditions/intestinal-obstruction/symptoms-causes/syc-20351460">Mayo Clinic (Intestinal Obstruction)</a></li>
-                <li><a href="https://www.ncbi.nlm.nih.gov/books/NBK558937/">National Library of Medicine | Illeus</a></li>
-               
-              </ul>
+          <h1 style={{fontSize: "2rem", fontWeight: 700, marginBottom: 8}}>Bowel Obstruction (Illeus)</h1>
+          <p>Blockage in the intestines, leading to abdominal pain, constipation, and unusual bowel sounds.</p>
+          <ul>
+            <li>Abdominal pain</li>
+            <li>Constipation</li>
+            <li>Abnormal bowel sounds</li>
+          </ul>
             </>
           ),
         },
@@ -121,33 +63,13 @@ export default function Services() {
           img: { src: supig15f, alt: "An illustration depicting an individual suffering from NAION; the individual is seemingly blind in one eye", widthPx: 300 },
           copy: (
           <>
-          <h2 style={{fontWeight: "700"}}>Non-Arteritic Anterior Ischemic Optic Neuropathy (NAION)</h2>
-              <p><em>Non-Arteritic Anterior Ischemic Optic Neuropathy (NAION)</em> is a condition that affects vision through the means of interrupted blood flow to the optical nerves.</p>
-              <h3> Signs & Symptoms</h3>
-              <h6> This is a reduced list of symptoms that one may exhibit upon being subject to the condition that is <span className="ail-b">Non-Arteritic Anterior Ischemic Optic Neuropathy (NAION)</span></h6>
-              <br/>
-              <p><em>Sudden Vision Loss</em>: Have you exer experienced sudden vision loss upon 
-              waking up or throughout any typical day? This is one of the <span className="b-yo">hallmark</span> symptoms for <span className="ail-b">NAION</span>. Most of the time, vision loss can be observed in an altitudinal fashion in that one half of your field of view can be absent.</p>
-              <br/>
-              <p><em>Dyschromatopsia</em>: This is a condition in which color blindness or 
-              otherwise reduction can take place. An onset of Dyschromatopsia would 
-              likely result in colors appearing faded or washed &ndash; </p>
-              <br/>
-              <p><em>Relative Afferent Pupillary Defect (RAPD)</em>: 
-              As a direct result of an onset of <span className="ail-b">NAION</span>, 
-              <span className="ail-b">RAPD</span> can occur. 
-              In the instance you were arrange an assessment with a certified practitioner, 
-              this condition could be directly connected to your onset of 
-              <span className="ail-b"> NAION </span> which would, in turn, 
-              strengthen your profile of eligibility.</p>
-              <br/>
-              <h3> Progression & Onset</h3>
-              <br/>
-              <p> Progression for<span className="ail-b"> NAION </span> 
-              is purportedly immediate. Most of the cases involving NAION are reported to begin shortly after waking up.</p>
-              <p><em>Early Stages</em>: Early stages of 
-              <span className="ail-b"> NAION </span> are typically defined by that of sudden vision loss and a mild </p>
-              <br/>
+          <h1 style={{fontSize: "2rem", fontWeight: 700, marginBottom: 8}}>Non-Arteritic Anterior Ischemic Optic Neuropathy (NAION)</h1>
+          <p>Sudden vision loss in one eye, often noticed upon waking, due to reduced blood flow to the optic nerve.</p>
+          <ul>
+            <li>Sudden vision loss</li>
+            <li>Faded or washed-out colors</li>
+            <li>Partial loss of field of view</li>
+          </ul>
               <p><em>Intermediate Stages</em>: Intermediate stages of <span className="ail-b">Gastroparesis</span> are characterized by prolonged periods of inadequate gastric motility, frequent nausea and vomiting, and noticeable weight loss.</p>
               <br/>
               <p><em>Late Stages</em>: The final stages for NAION would usually result in total vision loss with respect to the affected area. 
@@ -230,120 +152,57 @@ export default function Services() {
     },
     { id: "card-documentation", 
       title: "Documentation", 
-      blurb: `A host of documents are demanded before your compensation claim is considered. 
-      You need to gather documents that pertain to your current health standing amongst others 
-      that showcase your history with prescriptions and general indices of health.`, 
+      blurb: `To help a law office review your case, you’ll need to provide some basic medical documentation.`,
       sections: [
         {
           side: "right",
           img: { src: supig17f || "", alt: "Documents", widthPx: 300 },
           copy: (
             <>
-            <h2>Core Documentation</h2>
-            <p>The core documentation needed for that of successful submission for 
-            compensation typically include documents that describe the current 
-            health standing for that of the patient alongside interactions between 
-            that of clinical institutions and the like.</p>
-            <br/>
-            <p><em>General Medical Artifacts</em>: A host of documents need to be obtained prior to succesfully filing for compensation.
-            There are a host of documents that are purposed for profiling your health and other metrics that describe your person. </p>
+            <p>After you submit the form, the law office may request documents such as:</p>
             <ul>
-            <li>
-              <p><em>Electronic Health Record</em>: This is a standardized document that captures common 
-              information and characteristics. An<em> EHR </em>will typically 
-              include the following:
-              </p>
-              <h6> This is a reduced list of fields that one may encounter inside of an <span className="ail-b">Electronic Health Record</span>.</h6>
-              <ul>
-                <li>
-                  <em>First Name</em>
-                </li>
-                <li>
-                  <em>Last Name</em>
-                </li>
-                <li>
-                  <em>Contact Information (Address, Phone Number, Email,  &amp; Emergency Contacts)</em>
-                </li>
-                <li>
-                  <em>Insurance Details</em>
-                </li>
-                <li>
-                  <em>Medical Record Number</em>
-                </li>
-                <li>
-                  <em>Medical Provider Identifiers (e.g. Medicaid & Medicare)</em>
-                </li>
-                <li>
-                  <em>Medical History</em>
-                </li>
-                <li>
-                  <em>Allergens</em>
-                </li>
-                <li>
-                  <em>Medications</em>
-                </li>
-                 <li>
-                  <em>Immunizations</em>
-                </li>
-                 <li>
-                  <em>Vital Signs</em>
-                </li>
-              </ul>
-            </li>
-            <br/>
-            <li>
-            <p><em>Progression Notes</em>: 
-            Progression 
-            Notes are an active record of your 
-            current state of being. This is an rolling artifact in that it 
-            persists as you continue to visit your primary point of care. 
-            The key difference between that of 
-            <span className="ail-b"> Progression Notes </span> and an<span className="ail-b"> EHR </span>is the element of time. 
-            <span className="ail-b"> Progression Notes </span> are typically contemporaneous whilst an 
-            <span className="ail-b"> EHR </span> is historical.</p>
-            </li>
-            <br/>
-            <li>
-            <p><em>Diagnostics</em>: Your diagnostic tests 
-            are also a prerequisite for that of compensation 
-            claim submissions. Am authority responsible for 
-            reviewing your claim and determining the best plan of action 
-            for such would assesss your physiology and other measures of your body.</p>
-            </li>
-            <br/>
-            <li>
-            
-            </li>
-            </ul> 
-            <br/>
+              <li>Medical records showing your diagnosis and treatment</li>
+              <li>Prescription history for GLP-1 medications</li>
+              <li>Doctor’s notes or visit summaries</li>
+              <li>Any test results or diagnostic reports related to your condition</li>
+              <li>Insurance information (if applicable)</li>
+            </ul>
+            <p>Having these documents ready can help speed up your case review.</p>
             </>
-            )
+          )
         }
       ]
     },
      { id: "faq", 
       title: "FAQ", 
-      blurb: `Many individuals have a set of 
-      questions pertaining to the process 
-      that governs a potential eligibility claim.`, 
+      blurb: `Wondering what happens after you fill out our form? Here are answers to common questions about our process and timeline.`, 
       sections: [
         {
           side: "right",
           img: { src: supig17f || "", alt: "Documents", widthPx: 300 },
           copy: (
             <>
-            <h2>Frequently Asked Questions</h2>
-            <p><em>How long does it take to receive a 
-            response from my claim?</em>: 
-            The amount of time it takes for a claim to complete depends on a variety of factors such as the following:</p>
-            <ul>
-            <li>The agency in which your claim was both received and processed by</li>
-            <li>The amount of supporting documents and materials surrounding your claim and its authenticity</li>
-            <li></li>
-            <li></li>
-            <li></li>
-            </ul>
-            <p><em>Who will contact me when a decision is reached regarding my claim?</em></p>
+            {/* Removed FAQ title as requested */}
+            <p><em>What happens after I fill out the form?</em></p>
+            <p>
+              Once you submit your information through our form, we securely send your details to a trusted lead aggregator. The aggregator reviews your submission and matches you with a law office that specializes in GLP-1 injury compensation cases. A representative from the law office will then reach out to you directly to discuss your situation and next steps.
+            </p>
+            <p><em>How long does it take to be contacted?</em></p>
+            <p>
+              Most users are contacted by a law office within 1-3 business days after submitting the form. In some cases, it may take a little longer depending on the volume of inquiries and the availability of partner law firms in your area.
+            </p>
+            <p><em>Who will contact me?</em></p>
+            <p>
+              You will be contacted by a representative from a law office that has experience with GLP-1 injury claims. They will introduce themselves, explain the process, and answer any questions you may have.
+            </p>
+            <p><em>Is my information secure?</em></p>
+            <p>
+              Yes. We take your privacy seriously and only share your information with our trusted lead aggregator and partner law offices for the purpose of helping you with your claim.
+            </p>
+            <p><em>What if I have more questions?</em></p>
+            <p>
+              If you have additional questions, you can reply to the law office representative who contacts you, or reach out to us directly through our contact form.
+            </p>
             </>
             )
         }
@@ -366,13 +225,14 @@ export default function Services() {
         <div className="highlight-bar">Resources</div>
         <div style={{ display: 'flex', justifyContent: 'center', width: '100%' }}>
           <ExpandablePanel
-            items={items}
-            singleOpen
-            indicatorCollapsedSrc={expand}
-            indicatorExpandedSrc={collapse}
-            indicatorSize={22}
-            minColPx={320}
-          />
+              items={items}
+              singleOpen
+              indicatorCollapsedSrc={expand}
+              indicatorExpandedSrc={collapse}
+              indicatorSize={22}
+              minColPx={260}
+              openMode="fullrow"
+            />
         </div>
       </div>
       <Footer/>

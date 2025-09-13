@@ -138,13 +138,6 @@ export default function ExpandableCards({
   return (
     <motion.div
       className="xc-grid"
-      style={{
-        display: "grid",
-        gap: 28,
-        gridAutoFlow: "dense",
-        gridTemplateColumns: `repeat(auto-fit, minmax(${minColPx}px, max-content))`,
-        alignItems: "start",
-      }}
       layout
       transition={{ type: "spring", stiffness: 300, damping: 28 }}
     >

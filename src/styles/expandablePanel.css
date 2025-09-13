@@ -8,10 +8,11 @@
 
 /* FLEX GRID — children expand naturally, wrap as needed */
 .xc-grid {
-  display: flex;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
   gap: 28px;
-  justify-content: flex-start; /* or center/space-between */
-  align-items: flex-start;
+  justify-items: center;
+  align-items: start;
 }
 /* CARD */
 .xc-card {
@@ -19,8 +20,8 @@
   border: 2px solid var(--brand);
   border-radius: var(--radius);
   overflow: hidden;
-  display: inline-block;     /* shrink/grow to fit content */
-  width: auto;               /* natural width */
+  display: block;            /* stretch to fill grid cell */
+  width: 100%;               /* fill available width */
   max-width: 100%;           /* prevent overflow out of container */
   box-shadow: 0 1px 0 rgba(0,0,0,.02);
 }

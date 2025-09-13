@@ -95,8 +95,13 @@ body {
 } 
 
 .ft-wrapper .legal-links  { 
-    display: flex; 
+    display: flex;
+    flex-direction: row;
     flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 32px;
+    width: 100%;
 } 
 
 .m-xl-top  { 
@@ -231,8 +236,11 @@ a:active,a:hover {
 } 
 
 .ft-wrapper .legal-links a  { 
-    margin-right: calc(((100vw - 330px) / 24) * 2); 
-    display: inline;
+    margin: 0;
+    display: inline-flex;
+    align-items: center;
+    font-size: 1.1rem;
+    text-align: center;
 } 
 
 .ft-wrapper .legal-links a:last-child  { 
