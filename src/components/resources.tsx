@@ -2,7 +2,7 @@
 import Navigation from "./navigation";
 import Footer from "./footer";
 import ExpandablePanel, { type CardSpec, type PanelSection } from "./expandablePanel";
-import "../styles/services.css";
+// import "../styles/services.css"; // Removed: file does not exist
 import expand from "../assets/expand.png";
 import collapse from "../assets/collapse.png";
 import supig13f from "../assets/supig13f.png";
