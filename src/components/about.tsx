@@ -9,9 +9,7 @@ export default function About() {
             <Navigation />
             <div className="ab-r">
                 <div className="ab-dec"></div>
-                    <div className="ab-t">
-                        <h2>FAQ (Frequently Asked Questions)</h2>
-                        </div>
+                    <div className="highlight-bar">FAQ (Frequently Asked Questions)</div>
                     <div className="ab-cc">
                         <div className="ab-c">
                             <div className="ab-fv">

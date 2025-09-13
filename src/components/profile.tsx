@@ -1,6 +1,7 @@
 // profile.tsx
 import { useEffect, useRef, useState } from 'react';
 import Navigation from './navigation';
+import "../styles/about.css";
 import Footer from './footer';
 import ClaimsChart, { type Point } from './chart';
 import { SankeyDiagram } from './sankey';
@@ -51,12 +52,7 @@ export default function Profile() {
       <Navigation />
 
       <div className="pro-r">
-        {/* Page header (not a chart title) */}
-        <div className="pro-h">
-          <div className="pro-t">
-            <h2>Profile & Activity</h2>
-          </div>
-        </div>
+        <div className="highlight-bar">Profile & Activity</div>
 
         {/* Content column: cards stacked vertically */}
         <div className="pro-cc">

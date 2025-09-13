@@ -1,3 +1,21 @@
+/* Shared orange gradient bar for all pages */
+.highlight-bar {
+    width: 320px;
+    min-width: 320px;
+    max-width: 320px;
+    height: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    font-size: 1.25rem;
+    font-family: "Work Sans", sans-serif;
+    font-weight: 600;
+    border-radius: 12px;
+    margin: 0 auto 2rem auto;
+    background: -webkit-linear-gradient(45deg, #E07A5F, #E07A5F, #CC0000, #FF3300, #FF8000, #FFB300, #FF9900, #FFB300, #FFCC33);
+    box-shadow: 0 2px 8px rgba(0,0,0,0.07);
+}
 .ab-r {
     display: grid;
     grid-template-columns: [viewport-start] minmax(0, 1fr) [header-start] 200px 
