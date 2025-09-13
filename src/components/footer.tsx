@@ -30,9 +30,6 @@ const Footer = () => {
           ))}
         </div>
 
-        <div className="water-mark-container">
-          <p className="watermark-text style-fLE1D" id="style-fLE1D">change</p>
-        </div>
       </div>
     </footer>
   );
