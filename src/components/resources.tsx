@@ -2,7 +2,6 @@
 import Navigation from "./navigation";
 import Footer from "./footer";
 import ExpandablePanel, { type CardSpec, type PanelSection } from "./expandablePanel";
-import "../styles/services.css";
 import expand from "../assets/expand.png";
 import collapse from "../assets/collapse.png";
 import supig13f from "../assets/supig13f.png";
@@ -11,6 +10,7 @@ import supig15f from "../assets/supig15f.png";
 import supig17f from "../assets/supig17f.png";
 import supig22f from "../assets/supig22f.png";
 import "../styles/expandablePanel.css";
+import "../styles/resources.css";
 /** Author rows as (image + copy); panel enforces 1:1 images */
 type CardData = {
   id: string;
