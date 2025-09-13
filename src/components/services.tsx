@@ -336,17 +336,12 @@ export default function Services() {
   return (
     <>
       <Navigation />
-  <div className="highlight-bar">Eligibility & Next Steps</div>
+  <div className="highlight-bar">Next Steps</div>
       <div className="srv-r">
         <div className="srv-cr">
           <div className="srv-i">
             <div className="srv-g">
               <img width="150" height="150" src={srvg02} alt="services" />
-              <div className="srv-gi">
-                <h3>About our services</h3>
-                <p>You can find a variety of services that pertain to GLP-1 drugs here. 
-                  It's important to address any concerns regarding eligibility and best practices that accompany using GLP-1 drugs.</p>
-              </div>
             </div>
           </div>
           <div className="srv-cc">
