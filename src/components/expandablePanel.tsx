@@ -112,16 +112,16 @@ export default function ExpandableCards({
   }, [pageByCard]);
 
   const toggle = (id: string) => {
-    setOpenIds(prev => {
+    setOpenIds((prev) => {
       const next = new Set(prev);
       const wasOpen = next.has(id);
       if (singleOpen) next.clear();
       if (wasOpen) {
-        setExitingIds(s => new Set(s).add(id));
+        setExitingIds((s) => new Set(s).add(id));
         next.delete(id);
       } else {
         next.add(id);
-        setPageByCard(p => ({ ...p, [id]: 0 })); // reset page on open
+        setPageByCard((p) => ({ ...p, [id]: 0 })); // reset page on open
       }
       return next;
     });
@@ -144,13 +144,13 @@ export default function ExpandableCards({
         display: "grid",
         gap: 28,
         gridAutoFlow: "dense",
-        gridTemplateColumns: `repeat(${columns}, minmax(${minColPx}px, 1fr))`,
+        gridTemplateColumns: `repeat(auto-fit, minmax(${minColPx}px, max-content))`,
         alignItems: "start",
       }}
       layout
       transition={{ type: "spring", stiffness: 300, damping: 28 }}
     >
-      {items.map(item => {
+      {items.map((item) => {
         const open = isOpen(item.id);
         const keepWide = open || isExiting(item.id);
         const collapsedSrc = item.indicatorCollapsedSrc ?? indicatorCollapsedSrc;
@@ -162,12 +162,17 @@ export default function ExpandableCards({
         const totalPages = Math.ceil(sections.length / sectionsPerPage);
         const currentPage = pageByCard[item.id] ?? 0;
         const startIdx = currentPage * sectionsPerPage;
-        const currentSections = sections.slice(startIdx, startIdx + sectionsPerPage);
+        const currentSections = sections.slice(
+          startIdx,
+          startIdx + sectionsPerPage
+        );
 
         return (
           <article
             key={item.id}
-            ref={el => { cardRefs.current[item.id] = el as HTMLDivElement | null; }}
+            ref={(el) => {
+              cardRefs.current[item.id] = el as HTMLDivElement | null;
+            }}
             className={`xc-card ${keepWide ? "is-open" : ""}`}
             data-state={open ? "open" : "closed"}
             style={{
@@ -180,7 +185,8 @@ export default function ExpandableCards({
                   ? "1 / -1"
                   : "span 2"
                 : "auto",
-              minBlockSize: !keepWide && closedMinBlockSize ? closedMinBlockSize : undefined,
+              minBlockSize:
+                !keepWide && closedMinBlockSize ? closedMinBlockSize : undefined,
             }}
           >
             <motion.div
@@ -216,8 +222,9 @@ export default function ExpandableCards({
                     fontWeight: 800,
                     lineHeight: 1.1,
                     fontSize: "1rem",
-                    overflowWrap: "anywhere",
-                    hyphens: "auto",
+                    whiteSpace: "nowrap", // prevent wrapping
+                    overflow: "visible",   // allow expansion
+                    textOverflow: "unset", // no ellipsis
                   }}
                 >
                   {item.title}
@@ -237,7 +244,9 @@ export default function ExpandableCards({
                     style={{
                       position: "absolute",
                       inset: 0,
-                      backgroundImage: collapsedSrc ? `url(${collapsedSrc})` : "none",
+                      backgroundImage: collapsedSrc
+                        ? `url(${collapsedSrc})`
+                        : "none",
                       backgroundRepeat: "no-repeat",
                       backgroundPosition: "center",
                       backgroundSize: "contain",
@@ -249,7 +258,9 @@ export default function ExpandableCards({
                     style={{
                       position: "absolute",
                       inset: 0,
-                      backgroundImage: expandedSrc ? `url(${expandedSrc})` : "none",
+                      backgroundImage: expandedSrc
+                        ? `url(${expandedSrc})`
+                        : "none",
                       backgroundRepeat: "no-repeat",
                       backgroundPosition: "center",
                       backgroundSize: "contain",
@@ -283,7 +294,9 @@ export default function ExpandableCards({
                     }}
                   >
                     <div
-                      className={`xc-panel-inner ${item.contentClassName ?? ""}`}
+                      className={`xc-panel-inner ${
+                        item.contentClassName ?? ""
+                      }`}
                       style={{
                         padding: "18px 20px 22px",
                         minInlineSize: 100,
@@ -293,7 +306,10 @@ export default function ExpandableCards({
                       }}
                     >
                       {sections.length ? (
-                        <div className="xc-sections" style={{ display: "grid", gap: 16 }}>
+                        <div
+                          className="xc-sections"
+                          style={{ display: "grid", gap: 16 }}
+                        >
                           {totalPages > 1 && (
                             <div
                               style={{
@@ -306,9 +322,12 @@ export default function ExpandableCards({
                               <button
                                 className="btn-pagi"
                                 onClick={() =>
-                                  setPageByCard(p => ({
+                                  setPageByCard((p) => ({
                                     ...p,
-                                    [item.id]: currentPage === 0 ? totalPages - 1 : currentPage - 1,
+                                    [item.id]:
+                                      currentPage === 0
+                                        ? totalPages - 1
+                                        : currentPage - 1,
                                   }))
                                 }
                               >
@@ -320,9 +339,12 @@ export default function ExpandableCards({
                               <button
                                 className="btn-pagi"
                                 onClick={() =>
-                                  setPageByCard(p => ({
+                                  setPageByCard((p) => ({
                                     ...p,
-                                    [item.id]: currentPage === totalPages - 1 ? 0 : currentPage + 1,
+                                    [item.id]:
+                                      currentPage === totalPages - 1
+                                        ? 0
+                                        : currentPage + 1,
                                   }))
                                 }
                               >
@@ -331,21 +353,32 @@ export default function ExpandableCards({
                             </div>
                           )}
                           {item.intro && (
-                            <div className="xc-intro" style={{ marginBottom: 4 }}>
+                            <div
+                              className="xc-intro"
+                              style={{ marginBottom: 4 }}
+                            >
                               {item.intro}
                             </div>
                           )}
 
                           {currentSections.map((s, i) => {
                             const col = s.img?.widthPx ?? 240;
-                            const grid = s.side === "right"
-                              ? `1fr minmax(140px, ${col}px)`
-                              : `minmax(140px, ${col}px) 1fr`;
+                            const grid =
+                              s.side === "right"
+                                ? `1fr minmax(140px, ${col}px)`
+                                : `minmax(140px, ${col}px) 1fr`;
                             return (
                               <div
                                 key={i}
-                                className={`xc-row ${s.side === "right" ? "right" : "left"}`}
-                                style={{ display: "grid", gridTemplateColumns: grid, gap: 16, alignItems: "start" }}
+                                className={`xc-row ${
+                                  s.side === "right" ? "right" : "left"
+                                }`}
+                                style={{
+                                  display: "grid",
+                                  gridTemplateColumns: grid,
+                                  gap: 16,
+                                  alignItems: "start",
+                                }}
                               >
                                 {s.side !== "right" && s.img && (
                                   <figure style={{ margin: 0 }}>
@@ -387,9 +420,12 @@ export default function ExpandableCards({
                               <button
                                 className="btn-pagi"
                                 onClick={() =>
-                                  setPageByCard(p => ({
+                                  setPageByCard((p) => ({
                                     ...p,
-                                    [item.id]: currentPage === 0 ? totalPages - 1 : currentPage - 1,
+                                    [item.id]:
+                                      currentPage === 0
+                                        ? totalPages - 1
+                                        : currentPage - 1,
                                   }))
                                 }
                               >
@@ -401,9 +437,12 @@ export default function ExpandableCards({
                               <button
                                 className="btn-pagi"
                                 onClick={() =>
-                                  setPageByCard(p => ({
+                                  setPageByCard((p) => ({
                                     ...p,
-                                    [item.id]: currentPage === totalPages - 1 ? 0 : currentPage + 1,
+                                    [item.id]:
+                                      currentPage === totalPages - 1
+                                        ? 0
+                                        : currentPage + 1,
                                   }))
                                 }
                               >

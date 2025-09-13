@@ -6,7 +6,6 @@ import LandingForm from "./components/landingForm";
 // import Profile from "./components/profile";
 import File from "./components/file";
 import About from "./components/about";
-import Services from "./components/services";
 import Resources from "./components/resources";
 import AboutUs from "./components/aboutus";
 import './index.css';
@@ -17,7 +16,6 @@ const router = createBrowserRouter([
   { path: "/about", element: <About /> },
   // { path: "/profile", element: <Profile /> },
   { path: "/file", element: <File /> },
-  { path: "/services", element: <Services /> },
   { path: "/resources", element: <Resources /> },
   { path: "/aboutus", element: <AboutUs /> },
   { path: "/landing", element: <LandingForm /> },

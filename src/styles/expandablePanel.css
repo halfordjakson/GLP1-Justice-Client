@@ -6,35 +6,23 @@
   --radius: 14px;
 }
 
-/* GRID — lets children reflow and fill holes; neighbors will “minimize” */
+/* FLEX GRID — children expand naturally, wrap as needed */
 .xc-grid {
-  display: grid;
+  display: flex;
   gap: 28px;
-  grid-auto-flow: dense; /* tighter packing when one card spans multiple cols */
+  justify-content: flex-start; /* or center/space-between */
+  align-items: flex-start;
 }
-
 /* CARD */
 .xc-card {
   background: var(--card-bg);
   border: 2px solid var(--brand);
   border-radius: var(--radius);
-  overflow: hidden;            /* keep rounded corners during animation */
-  min-inline-size: 180px;      /* sync with minColPx default */
+  overflow: hidden;
+  display: inline-block;     /* shrink/grow to fit content */
+  width: auto;               /* natural width */
+  max-width: 100%;           /* prevent overflow out of container */
   box-shadow: 0 1px 0 rgba(0,0,0,.02);
-}
-
-/* when open, expand horizontally by spanning more columns */
-.xc-card.span-2 { grid-column: span 2; }
-
-/* On very large displays you can let it span 3 columns */
-@media (min-width: 1200px) {
-  .xc-card.span-2 { grid-column: span 3; }
-}
-
-/* On narrow screens, stack and let open card take the full row */
-@media (max-width: 700px) {
-  .xc-grid { grid-template-columns: 1fr !important; }
-  .xc-card.span-2 { grid-column: 1 / -1; }
 }
 
 /* HEADER BUTTON */
@@ -43,7 +31,8 @@
   width: 100%;
   padding: 22px 20px;
   display: grid;
-  grid-template-columns: auto 1fr auto;
+  /* ✅ let the text size itself, not truncate */
+  grid-template-columns: auto max-content auto;
   gap: 12px;
   align-items: center;
   background: transparent;
@@ -62,7 +51,15 @@
 }
 
 .xc-ic { font-size: 1.2rem; line-height: 1; }
-.xc-title { line-height: 1.15; }
+
+/* ✅ prevent truncation of "Documentation" */
+.xc-title {
+  line-height: 1.15;
+  white-space: nowrap;
+  overflow: visible;
+  text-overflow: unset;
+}
+
 .xc-chev { transition: transform .2s ease; }
 .xc-card.is-open .xc-chev { transform: rotate(180deg); }
 
@@ -73,15 +70,13 @@
               radial-gradient(150% 60% at 50% 0%, rgba(255,77,0,0.06), transparent 60%);
 }
 
-/* Ensure readable measure:
-   - min-inline-size guarantees at least ~100px line width
-   - max-inline-size caps overly long lines when a card spans wide */
 .xc-panel-inner {
   padding: 18px 20px 22px;
-  min-inline-size: 100px;  /* ✅ requested minimum line width */
-  max-inline-size: 60ch;   /* optional: comfortable max measure */
+  min-inline-size: 100px;
+  max-inline-size: 60ch;
   color: #2a2a2a;
   line-height: 1.55;
+  white-space: normal; /* ✅ allow wrapping inside panel */
 }
 
 .xc-panel-inner p { margin: 0 0 12px; }
@@ -92,7 +87,7 @@
   border-bottom: 1px solid rgba(255,77,0,.35);
 }
 .xc-panel-inner a:hover { border-bottom-color: currentColor; }
-/* images/group inside the expanded panel */
+
 .xc-media {
   display: grid;
   gap: 12px;
@@ -102,21 +97,19 @@
 .xc-fig { margin: 0; }
 .xc-fig img { width: 100%; height: auto; display: block; border-radius: 12px; }
 
-/* optional caption style */
 .xc-cap {
   margin-top: 6px;
   font-size: 0.9rem;
   color: #667085;
 }
 
-/* simple alignment helpers */
 .align-left   { margin-inline-end: auto; }
 .align-right  { margin-inline-start: auto; }
 .align-center { margin-inline: auto; }
-/* 1) A reusable "side-by-side" layout for any open panel */
+
 .xc-card[data-state="open"] .my-split {
   display: grid;
-  grid-template-columns: 280px 1fr;  /* image | text */
+  grid-template-columns: 280px 1fr;
   gap: 16px;
   align-items: start;
 }
@@ -127,6 +120,7 @@
   border-radius: 12px;
   object-fit: cover;
 }
+
 .btn-pagi {
   outline: none;
   border: none;
@@ -136,6 +130,7 @@
   color: white;
   font-family: "Work Sans";
 }
+
 .btn-pagi h3 {
   font-size: 0.75rem !important;
 }
