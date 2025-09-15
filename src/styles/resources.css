@@ -10,14 +10,7 @@
 }
 .srv-cr {
     display: grid;
-    grid-template-columns: 
-    [viewport-start] 
-    minmax(0, 1fr) 
-    [content-start] 
-    700px 
-    [content-end] 
-    minmax(0, 1fr) 
-    [viewport-end];
+    grid-template-columns: [viewport-start] minmax(0, 1fr) [content-start] 700px [content-end] minmax(0, 1fr) [viewport-end];
     grid-template-rows: repeat(2, auto);
     gap: 1rem;
     flex-direction: row-reverse;

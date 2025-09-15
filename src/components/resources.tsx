@@ -161,13 +161,74 @@ export default function Services() {
             <>
             <p>After you submit the form, the law office may request documents such as:</p>
             <ul>
-              <li>Medical records showing your diagnosis and treatment</li>
-              <li>Prescription history for GLP-1 medications</li>
-              <li>Doctor’s notes or visit summaries</li>
-              <li>Any test results or diagnostic reports related to your condition</li>
-              <li>Insurance information (if applicable)</li>
-            </ul>
-            <p>Having these documents ready can help speed up your case review.</p>
+            <li>
+              <p><em>Electronic Health Record</em>: This is a standardized document that captures common 
+              information and characteristics. An<em> EHR </em>will typically 
+              include the following:
+              </p>
+              <h6> This is a reduced list of fields that one may encounter inside of an <span className="ail-b">Electronic Health Record</span>.</h6>
+              <ul>
+                <li>
+                  <em>First Name</em>
+                </li>
+                <li>
+                  <em>Last Name</em>
+                </li>
+                <li>
+                  <em>Contact Information (Address, Phone Number, Email,  &amp; Emergency Contacts)</em>
+                </li>
+                <li>
+                  <em>Insurance Details</em>
+                </li>
+                <li>
+                  <em>Medical Record Number</em>
+                </li>
+                <li>
+                  <em>Medical Provider Identifiers (e.g. Medicaid & Medicare)</em>
+                </li>
+                <li>
+                  <em>Medical History</em>
+                </li>
+                <li>
+                  <em>Allergens</em>
+                </li>
+                <li>
+                  <em>Medications</em>
+                </li>
+                 <li>
+                  <em>Immunizations</em>
+                </li>
+                 <li>
+                  <em>Vital Signs</em>
+                </li>
+              </ul>
+            </li>
+            <br/>
+            <li>
+            <p><em>Progression Notes</em>: 
+            Progression 
+            Notes are an active record of your 
+            current state of being. This is an rolling artifact in that it 
+            persists as you continue to visit your primary point of care. 
+            The key difference between that of 
+            <span className="ail-b"> Progression Notes </span> and an<span className="ail-b"> EHR </span>is the element of time. 
+            <span className="ail-b"> Progression Notes </span> are typically contemporaneous whilst an 
+            <span className="ail-b"> EHR </span> is historical.</p>
+            </li>
+            <br/>
+            <li>
+            <p><em>Diagnostics</em>: Your diagnostic tests 
+            are also a prerequisite for that of compensation 
+            claim submissions. An authority responsible for 
+            reviewing your claim and determining the best plan of action 
+            for such would assess your physiology and other indices of health.</p>
+            </li>
+            <br/>
+            <li>
+            
+            </li>
+            </ul> 
+            <br/>
             </>
           )
         }
@@ -182,27 +243,23 @@ export default function Services() {
           img: { src: supig17f || "", alt: "Documents", widthPx: 300 },
           copy: (
             <>
-            {/* Removed FAQ title as requested */}
-            <p><em>What happens after I fill out the form?</em></p>
-            <p>
-              Once you submit your information through our form, we securely send your details to a trusted lead aggregator. The aggregator reviews your submission and matches you with a law office that specializes in GLP-1 injury compensation cases. A representative from the law office will then reach out to you directly to discuss your situation and next steps.
-            </p>
-            <p><em>How long does it take to be contacted?</em></p>
-            <p>
-              Most users are contacted by a law office within 1-3 business days after submitting the form. In some cases, it may take a little longer depending on the volume of inquiries and the availability of partner law firms in your area.
-            </p>
-            <p><em>Who will contact me?</em></p>
-            <p>
-              You will be contacted by a representative from a law office that has experience with GLP-1 injury claims. They will introduce themselves, explain the process, and answer any questions you may have.
-            </p>
-            <p><em>Is my information secure?</em></p>
-            <p>
-              Yes. We take your privacy seriously and only share your information with our trusted lead aggregator and partner law offices for the purpose of helping you with your claim.
-            </p>
-            <p><em>What if I have more questions?</em></p>
-            <p>
-              If you have additional questions, you can reply to the law office representative who contacts you, or reach out to us directly through our contact form.
-            </p>
+            <h2>Frequently Asked Questions</h2>
+            <p><em>How long does it take to receive a 
+            response from my claim?</em>: 
+            The amount of time it takes for a claim to complete depends on a variety of factors such as the following:</p>
+            <ul>
+            <li>The agency in which your claim was both received and processed by</li>
+            <li>The amount of supporting documents and materials surrounding your claim and its authenticity</li>
+            <li></li>
+            <li></li>
+            <li></li>
+            </ul>
+            <br/>
+            <p><em>Who will contact me when a 
+            decision is reached regarding my claim?</em>: 
+            We will establish a channel of communication 
+            with you in an effort to give you briefings 
+            on the state of your compensation claim.</p>
             </>
             )
         }
