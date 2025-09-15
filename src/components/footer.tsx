@@ -17,8 +17,7 @@ const Footer = () => {
               key={idx}
               href={link.href}
               target="_self"
-              className={`infotext ${link.extraClass || ''}`.trim()}
-              tabIndex={link.tabIndex}
+              className="infotext"
             >
               {link.label}
               <div className="righ-arrow-icon-block">
