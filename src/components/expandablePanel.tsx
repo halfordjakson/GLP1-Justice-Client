@@ -299,7 +299,50 @@ export default function ExpandableCards({
                           className="xc-sections"
                           style={{ display: "grid", gap: 16 }}
                         >
-                          {totalPages > 1 && (
+                          {totalPages > 1 && item.id === "card-eligibility" && (
+                            <div
+                              style={{
+                                marginBottom: 24,
+                                display: "flex",
+                                justifyContent: "space-between",
+                                alignItems: "center",
+                              }}
+                            >
+                              <button
+                                className="btn-pagi"
+                                onClick={() =>
+                                  setPageByCard((p) => ({
+                                    ...p,
+                                    [item.id]:
+                                      currentPage === 0
+                                        ? totalPages - 1
+                                        : currentPage - 1,
+                                  }))
+                                }
+                              >
+                                <h3>Previous</h3>
+                              </button>
+                              <span>
+                                Page {currentPage + 1} of {totalPages}
+                              </span>
+                              <button
+                                className="btn-pagi"
+                                onClick={() =>
+                                  setPageByCard((p) => ({
+                                    ...p,
+                                    [item.id]:
+                                      currentPage === totalPages - 1
+                                        ? 0
+                                        : currentPage + 1,
+                                  }))
+                                }
+                              >
+                                <h3>Next</h3>
+                              </button>
+                            </div>
+                          )}
+                          {/* For all other cards, keep pagination at the bottom as before */}
+                          {totalPages > 1 && item.id !== "card-eligibility" && (
                             <div
                               style={{
                                 marginTop: 12,
@@ -396,8 +439,8 @@ export default function ExpandableCards({
                             );
                           })}
 
-                          {/* Pagination controls */}
-                          {totalPages > 1 && (
+                          {/* Pagination controls: only show at bottom for non-Eligibility cards */}
+                          {totalPages > 1 && item.id !== "card-eligibility" && (
                             <div
                               style={{
                                 marginTop: 12,

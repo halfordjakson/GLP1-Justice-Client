@@ -28,6 +28,7 @@ return (
             ['/', 'Home'],
             ['/file',  'Newsletter'],
             ['/resources', 'Resources'],
+            ['/privacy', 'Privacy'],
           ].map(([href, label]) => (
             <li
               className={

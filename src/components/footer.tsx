@@ -4,10 +4,8 @@ const Footer = () => {
   // ...existing code...
 
   const legalLinks = [
-    { href: '/copyright', label: '© 2025 glp Justice A/S' },
-    { href: '/privacy/data', label: 'Data Privacy' },
-    { href: '/privacy/cookies', label: 'Cookie policy' },
-    { href: '#', label: 'Cookie settings', extraClass: 'optanon-toggle-display', tabIndex: 0 }
+    { href: '/', label: '© 2025 glp Justice A/S' },
+    { href: '/privacy', label: 'Privacy Policy' }
   ];
 
   return (
