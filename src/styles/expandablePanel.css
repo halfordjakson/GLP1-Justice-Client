@@ -14,6 +14,16 @@
   justify-items: center;
   align-items: start;
 }
+@media screen and (min-width: 375px){
+  .xc-grid {
+    grid-template-columns: auto;
+  }
+}
+@media screen and (min-width: 360px){
+  .xc-grid {
+    grid-template-columns: auto;
+  }
+}
 /* CARD */
 .xc-card {
   background: var(--card-bg);
@@ -82,6 +92,18 @@
 
 .xc-panel-inner p { margin: 0 0 12px; }
 .xc-panel-inner ul { margin: 0; padding-left: 1.2rem; }
+@media screen and (min-width: 360px){
+  .xc-copy h3 {
+    font-size: 1rem;
+  }
+  .xc-copy h4 {
+    font-size: 0.8rem;
+  }
+
+  .xc-copy h2 {
+    font-size: 1.3rem;
+  }
+}
 .xc-panel-inner a {
   color: var(--brand);
   text-decoration: none;
