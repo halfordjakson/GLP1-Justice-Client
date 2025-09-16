@@ -1,12 +1,13 @@
 import { Link } from 'react-router-dom';
 import '../styles/navigation.css';
 import glpJustice from "../assets/glp-justice-default-08072025.png";
+import glpjusticefall from "../assets/glp-justice-halloween-2025.png";
 export default function Navigation() {
 return (
     <nav className="dcr-5k6jfi snipcss-v6Fa8 style-Y8dkI" id="style-Y8dkI">
       <div className="dcr-1apgfiu">
         <a href="/" data-link-name="header : logo">
-          <img src={glpJustice} width="250" height="250"/>
+          <img src={glpjusticefall} width="250" height="250"/>
           <span className="dcr-1p0hins">glp Justice</span>
         </a>
       </div>
