@@ -30,7 +30,7 @@ export default function Services() {
           img: { src: supig13f, alt: "An illustration of an individual's abdomen in which gastric statis has taken place.", widthPx: 320 },
           copy: (
             <>
-              <h1 style={{fontSize: "2rem", fontWeight: 700, marginBottom: 8}}>Gastroparesis (Gastric Stasis)</h1>
+              <h2>Gastroperesis (Gastric Stasis)</h2>
               <p>Delayed stomach emptying, causing nausea, vomiting, and feeling full quickly after eating.</p>
               <ul style={{paddingLeft: 0, listStylePosition: 'inside'}}>
                 <li>Nausea after meals</li>
@@ -48,7 +48,7 @@ export default function Services() {
           img: { src: supig14f, alt: "An illustration of an individual's abdomen with the intestinal lineage visibly blocked", widthPx: 300 },
           copy: (
           <>
-          <h1 style={{fontSize: "2rem", fontWeight: 700, marginBottom: 8}}>Bowel Obstruction (Ileus)</h1>
+          <h2>Bowel Obstruction (Illeus)</h2>
           <p>Blockage in the intestines, leading to abdominal pain, constipation, and unusual bowel sounds.</p>
           <ul style={{paddingLeft: 0, listStylePosition: 'inside'}}>
             <li>Abdominal pain</li>
@@ -66,7 +66,7 @@ export default function Services() {
           img: { src: supig15f, alt: "An illustration depicting an individual suffering from NAION; the individual is seemingly blind in one eye", widthPx: 300 },
           copy: (
           <>
-          <h1 style={{fontSize: "2rem", fontWeight: 700, marginBottom: 8}}>Non-Arteritic Anterior Ischemic Optic Neuropathy (NAION)</h1>
+          <h2>Non-Arteritic Anterior Ischemic Optic Neuropathy (NAION)</h2>
           <p>Sudden vision loss in one eye, often noticed upon waking, due to reduced blood flow to the optic nerve.</p>
           <ul style={{paddingLeft: 0, listStylePosition: 'inside'}}>
             <li>Sudden vision loss</li>

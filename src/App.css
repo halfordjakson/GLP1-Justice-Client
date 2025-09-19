@@ -41,7 +41,7 @@ body {
   --mktg-accent-secondary: #3fb950;
 }
 
-.navigation-pre {
+.-pre {
   cursor: pointer;
   position: relative;
   width: 100%;

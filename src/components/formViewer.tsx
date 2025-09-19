@@ -154,9 +154,9 @@ export function FormViewer() {
             {/* TEMP: Test button to call onFinish directly */}
             <button
               type="button"
-              style={{ marginLeft: 8, background: '#f90', color: '#fff' }}
+              style={{textWrap: "nowrap",padding: "0.75rem 1.25rem", outline: "none", backgroundColor: "white", border: "1px solid #FF4D00"}}
               onClick={() => onFinish({
-                firstName: 'Test',
+                firstName: 'Subscribe',
                 lastName: 'User',
                 email: 'test@example.com',
                 zip: '12345',
@@ -164,7 +164,7 @@ export function FormViewer() {
                 hospitalized: 'No'
               })}
             >
-              Test POST
+              Subscribe
             </button>
           </div>
         )}
